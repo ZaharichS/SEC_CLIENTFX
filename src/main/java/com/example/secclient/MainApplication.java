@@ -15,7 +15,7 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 689, 459);
         stage.setTitle("Your Book App");
-        stage.getIcons().add(new Image(Objects.requireNonNull(Objects.class.getResourceAsStream("images/favicon-32x32.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("image/main_icon.png"))));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
