@@ -14,7 +14,9 @@
 
 .background {
    -fx-font-family: rubicBold;
-   -fx-background-image:  url("../image/icons/png/background.png");
+/*   -fx-background-image:  url("../image/icons/png/background.png");*/
+/*   -fx-background-image:  url("../image/icons/png/otherWave_blur.png");*/
+   -fx-background-image:  url("../image/icons/png/otherWave_blur_defoultSize.png");
    -fx-background-repeat: no-repeat;
    -fx-background-color: #344E6C;
 }
@@ -28,17 +30,30 @@
    -fx-background-radius: 20px;
    -fx-border-width: 2;
    -fx-border-style: none none none none;
+   -fx-focus-color: white;
 }
 .menu-bar .label {
    -fx-text-fill: white;
+}
+.menu:hover {
+   -fx-background-color: #567ca0;
+   -fx-border-radius: 20px;
+   -fx-background-radius: 20px;
 }
 .context-menu {
    -fx-font-weight: bold;
    -fx-background-color: rgba(237, 237, 237, 0.16);
 }
+.context-menu:hover > .menu-item:focused{
+   -fx-background-color: rgba(237, 237, 237, 0.16);
+}
+.menu-item:focused {
+   -fx-background-color: rgba(237, 237, 237, 0.33);
+}
 
 .table-view {
-   -fx-background-color: transparent;
+   -fx-background-color: #EDEDED;
+   -fx-border-color: #456990;
 }
 .table-view .column-header {
    -fx-background-color: #456990;
@@ -81,28 +96,22 @@
 }
 
 
-.button-bar {
-   -fx-font-family: rubicBold;
-}
 .button-bar .button {
+   -fx-text-fill:   #456990;;
    -fx-padding: 0 10 0 10;
-   -fx-effect: dropshadow( gaussian , #EDEDED , 11, 0,0,1 );
+   -fx-effect: dropshadow( gaussian , rgba(237, 237, 237, 0.55), 11, 0,0,1 );
    -fx-font-size: 10px;
    -fx-font-family: rubicBold;
    -fx-font-weight: bold;
-  -fx-background-color: #EDEDED;
+
    -fx-border-radius: 20px;
    -fx-background-radius: 20px;
    -fx-border-width: 2;
    -fx-border-style: none none none none;
 }
 .button-bar .button:hover {
-   -fx-background-color:
-           linear-gradient(from 0% 93% to 0% 100%, #456990 0%, #5482b1 100%),
-           #3b618a,
-           #497ebb,
-           radial-gradient(center 50% 50%, radius 100%, #478bd4, #3270b4);
+   -fx-background-color: #d0d0d0;
 }
 .button-bar .button:pressed {
-   -fx-padding: 3 6 5 6;
+   -fx-padding: 3 0 5 0;
 }
