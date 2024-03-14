@@ -21,6 +21,7 @@
 /*   -fx-background-image:  url("../image/icons/png/background.png");*/
 /*   -fx-background-image:  url("../image/icons/png/otherWave_blur.png");*/
 /*   -fx-background-image:  url("../image/icons/png/otherWave_blur_defoultSize.png");*/
+   -fx-background-image: url("../image/png/otherWave.png");
    -fx-background-repeat: no-repeat;
    -fx-background-color: #344E6C;
 }

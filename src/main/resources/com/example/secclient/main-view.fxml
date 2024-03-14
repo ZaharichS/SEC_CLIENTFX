@@ -24,9 +24,9 @@
               <MenuItem mnemonicParsing="false" text="Справка" />
             </items>
                <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                      <image>
-                        <!--<Image url="@image/icons/png/file.png" />-->
+                        <!--<Image url="@image/png/icons/file.png" />-->
                      </image>
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
