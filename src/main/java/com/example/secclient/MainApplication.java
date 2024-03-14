@@ -19,7 +19,7 @@ public class MainApplication extends Application {
         Устанавливаем иконку на родном toolbar
         Параметр который запрещает масштабировать окно
         */
-        stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("image/main_icon.png"))));
+        //stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("image/main_icon.png"))));
         stage.setResizable(false);
 
         stage.setScene(scene);

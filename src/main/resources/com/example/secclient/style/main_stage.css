@@ -1,22 +1,26 @@
 
 @font-face {
    font-family: rubicBold;
+   /*
    src: url(../font/Rubik-Bold.ttf);
+   */
 }
 @font-face {
    font-family: rubicBlack;
+   /*
    src: url(../font/Rubik-Black.ttf);
+   */
 }
 @font-face {
    font-family: rubicRegular;
-   src: url(../font/Rubik-Regular.ttf);
+/*   src: url(../font/Rubik-Regular.ttf);*/
 }
 
 .background {
    -fx-font-family: rubicBold;
 /*   -fx-background-image:  url("../image/icons/png/background.png");*/
 /*   -fx-background-image:  url("../image/icons/png/otherWave_blur.png");*/
-   -fx-background-image:  url("../image/icons/png/otherWave_blur_defoultSize.png");
+/*   -fx-background-image:  url("../image/icons/png/otherWave_blur_defoultSize.png");*/
    -fx-background-repeat: no-repeat;
    -fx-background-color: #344E6C;
 }
@@ -67,16 +71,16 @@
    -fx-border-color: transparent;
    -fx-padding: 2 0 2 10px;
 }
-.table-row-cell: hover {
+.table-row-cell:hover {
    -fx-background-color: #EDEDED;
    -fx-text-background-color: #456990;
 }
-.table-row-cell: odd{
+.table-row-cell:odd{
    -fx-background-color: #EDEDED;
    -fx-background-insets: 0, 0 0 1 0;
    -fx-padding: 0.0em;
 }
-.table-row-cell: even{
+.table-row-cell:even{
    -fx-background-color: #EDEDED;
    -fx-background-insets: 0, 0 0 1 0;
    -fx-padding: 0.0em;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="279.0" prefWidth="465.0" styleClass="background" stylesheets="@../style/modal_stage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.secclient.controller.BookController">
+   <children>
+      <Pane layoutX="32.0" layoutY="32.0" prefHeight="204.0" prefWidth="379.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="27.0">
+         <children>
+            <TextField fx:id="textName" layoutX="66.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="174.0" />
+            <Label layoutX="10.0" layoutY="36.0" text="Название" />
+            <Label layoutX="10.0" layoutY="71.0" text="Автор" />
+            <ComboBox fx:id="comboBoxAuthor" layoutX="78.0" layoutY="67.0" prefWidth="150.0" />
+            <Label layoutX="10.0" layoutY="101.0" text="Издательство" />
+            <ComboBox fx:id="comboBoxPublisher" layoutX="88.0" layoutY="97.0" prefWidth="150.0" />
+            <Label layoutX="10.0" layoutY="131.0" text="Жанр" />
+            <ComboBox fx:id="comboBoxGenre" layoutX="88.0" layoutY="127.0" prefWidth="150.0" />
+            <TextField fx:id="textYear" layoutX="66.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="174.0" />
+            <Label layoutX="10.0" layoutY="166.0" text="Год" />
+         </children>
+      </Pane>
+      <ButtonBar layoutX="251.0" layoutY="236.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="236.0">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#addNewBook" text="Добавить" />
+            <Button mnemonicParsing="false" onAction="#cancelEvent" prefHeight="26.0" prefWidth="63.0" text="Отмена" />
+         </buttons>
+      </ButtonBar>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>
