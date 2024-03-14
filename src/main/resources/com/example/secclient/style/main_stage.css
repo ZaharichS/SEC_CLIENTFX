@@ -1,33 +1,39 @@
 
 @font-face {
-   font-family: rubicBold;
-   /*
-   src: url(../font/Rubik-Bold.ttf);
-   */
+   font-family: "Rubik Bold";
+   src: url("../font/Rubik-Bold.ttf");
 }
 @font-face {
-   font-family: rubicBlack;
-   /*
-   src: url(../font/Rubik-Black.ttf);
-   */
+   font-family: "Rubik ExtraBold";
+   src: url("../font/Rubik-ExtraBold.ttf");
 }
 @font-face {
-   font-family: rubicRegular;
-/*   src: url(../font/Rubik-Regular.ttf);*/
+   font-family: "Rubik SemiBold";
+   src: url("../font/Rubik-SemiBold.ttf");
+}
+@font-face {
+   font-family: "Rubik Black";
+   src: url("../font/Rubik-Black.ttf");
+}
+@font-face {
+   font-family: "Rubik Regular";
+   src: url("../font/Rubik-Regular.ttf");
 }
 
 .background {
    -fx-font-family: rubicBold;
 /*   -fx-background-image:  url("../image/icons/png/background.png");*/
 /*   -fx-background-image:  url("../image/icons/png/otherWave_blur.png");*/
-/*   -fx-background-image:  url("../image/icons/png/otherWave_blur_defoultSize.png");*/
-   -fx-background-image: url("../image/png/otherWave.png");
+   -fx-background-image:  url("../image/icons/png/Wave_background.png");
    -fx-background-repeat: no-repeat;
    -fx-background-color: #344E6C;
 }
 .menu-bar {
-   -fx-font-family: rubicBold;
-   -fx-font-size: 10px;
+   -fx-focus-color: transparent;
+   -fx-faint-focus-color: transparent;
+
+   -fx-font-family: "Rubik Bold";
+   -fx-font-size: 13px;
    -fx-font-weight: bold;
    -fx-background-color: #456990;
    /*-fx-background-color: linear-gradient(from 0px 0px to 0px 50px, rgba(35,69,105,1) 0%, rgba(69,105,144,1) 100%); */
@@ -35,7 +41,7 @@
    -fx-background-radius: 20px;
    -fx-border-width: 2;
    -fx-border-style: none none none none;
-   -fx-focus-color: white;
+
 }
 .menu-bar .label {
    -fx-text-fill: white;
@@ -64,11 +70,12 @@
    -fx-background-color: #456990;
 }
 .table-view .column-header .label {
-   -fx-font-family: rubicBlack;
+   -fx-font-family: "Rubik SemiBold";
+   -fx-font-weight: bolder;
    -fx-text-fill: white;
 }
 .table-view .table-cell{
-   -fx-font-family: rubicRegular;
+   -fx-font-family: "Rubik Regular";
    -fx-border-color: transparent;
    -fx-padding: 2 0 2 10px;
 }
@@ -105,9 +112,11 @@
    -fx-text-fill:   #456990;;
    -fx-padding: 0 10 0 10;
    -fx-effect: dropshadow( gaussian , rgba(237, 237, 237, 0.55), 11, 0,0,1 );
-   -fx-font-size: 10px;
-   -fx-font-family: rubicBold;
-   -fx-font-weight: bold;
+   -fx-font-size: 12px;
+   -fx-font-family: "Rubik SemiBold";
+
+   -fx-focus-color: transparent;
+   -fx-faint-focus-color: transparent;
 
    -fx-border-radius: 20px;
    -fx-background-radius: 20px;
