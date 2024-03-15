@@ -29,7 +29,7 @@ public class MainController {
     @FXML
     void addBookAction(ActionEvent event) {
         HttpService service = new HttpService();
-        //System.out.println(service.get("http://localhost:28245/api/v1/book/all"));
+        System.out.println(service.get("http://localhost:28245/api/v1/book/all"));
     }
 
     @FXML
@@ -55,7 +55,6 @@ public class MainController {
     @FXML
     void changeBookAction(ActionEvent event) {
         HttpService service = new HttpService();
-        //System.out.println(service.delete("http://localhost:28245/api/v1/book?id=", 4L));
     }
 
     @FXML
