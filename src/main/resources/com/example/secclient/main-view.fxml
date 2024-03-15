@@ -122,11 +122,11 @@
    <center>
       <TableView fx:id="bookTable" maxWidth="-Infinity" prefHeight="314.0" prefWidth="765.0" BorderPane.alignment="CENTER">
           <columns>
-          <TableColumn fx:id="bookId" prefWidth="32.0" text="№" />
-          <TableColumn fx:id="bookTitle" prefWidth="230.0" text="Название" />
-            <TableColumn fx:id="bookAuthor" prefWidth="180.0" text="Автор" />
-            <TableColumn fx:id="bookGenre" prefWidth="148.0" text="Жанр" />
-            <TableColumn fx:id="bookPublish" minWidth="3.0" prefWidth="171.33331298828125" text="Издательство" />
+          <TableColumn fx:id="bookYear" prefWidth="62.0" resizable="false" text="Год" />
+          <TableColumn fx:id="bookTitle" prefWidth="200.0" resizable="false" text="Название" />
+            <TableColumn fx:id="bookAuthor" prefWidth="180.0" resizable="false" text="Автор" />
+            <TableColumn fx:id="bookGenre" prefWidth="148.0" resizable="false" text="Жанр" />
+            <TableColumn fx:id="bookPublish" minWidth="3.0" prefWidth="171.33331298828125" resizable="false" text="Издательство" />
         </columns>
          <BorderPane.margin>
             <Insets left="15.0" right="15.0" top="22.0" />

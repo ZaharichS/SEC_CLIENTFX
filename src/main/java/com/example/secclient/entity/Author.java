@@ -17,4 +17,9 @@ public class Author {
     private String name;
     private String surname;
     private List<Book> books;
+
+    @Override
+    public String toString() {
+        return lastname + " " +  name + " " + surname;
+    }
 }

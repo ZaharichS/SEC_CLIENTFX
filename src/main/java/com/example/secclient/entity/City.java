@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,5 +15,10 @@ public class City {
     private Long id;
     private String title;
 
-//    private List<Publisher> publisher;
+    private List<Publisher> publisher;
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }

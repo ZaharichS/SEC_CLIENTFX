@@ -16,4 +16,9 @@ public class Genre {
     private String title;
 
     private List<Book> books;
+
+    @Override
+    public String toString() {
+        return  title;
+    }
 }

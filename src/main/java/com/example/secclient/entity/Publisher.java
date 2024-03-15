@@ -5,18 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class Publisher {
     private Long id;
     private String title;
-    private String year;
 
-    private Author author;
+    private City city;
 
-    private Publisher publisher;
+    private List<Book> books;
 
-    private Genre genre;
+    @Override
+    public String toString() {
+        return title;
+    }
 }

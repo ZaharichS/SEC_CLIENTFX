@@ -76,20 +76,26 @@
 }
 .table-view .table-cell{
    -fx-font-family: "Rubik Regular";
-   -fx-border-color: transparent;
-   -fx-padding: 2 0 2 10px;
+   -fx-font-size: 13px;
+/*   -fx-border-color: transparent;*/
+/*   -fx-padding: 2 0 2 10px;*/
+   -fx-text-alignment: center;
+}
+.table-row-cell {
+   -fx-text-alignment: center;
 }
 .table-row-cell:hover {
    -fx-background-color: #EDEDED;
-   -fx-text-background-color: #456990;
+   -fx-text-background-color: #4c81b4;
 }
 .table-row-cell:odd{
-   -fx-background-color: #EDEDED;
+/*   -fx-text-background-color: #4c81b4;*/
+/*   -fx-background-color: #456990;*/
    -fx-background-insets: 0, 0 0 1 0;
    -fx-padding: 0.0em;
 }
 .table-row-cell:even{
-   -fx-background-color: #EDEDED;
+/*   -fx-background-color: #EDEDED;*/
    -fx-background-insets: 0, 0 0 1 0;
    -fx-padding: 0.0em;
 }
