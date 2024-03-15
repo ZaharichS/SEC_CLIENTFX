@@ -6,29 +6,49 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="279.0" prefWidth="465.0" styleClass="background" stylesheets="@../style/modal_stage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.secclient.controller.BookController">
+<AnchorPane fx:id="bookModal" prefHeight="318.0" prefWidth="498.0" styleClass="background" stylesheets="@../style/modal_stage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.secclient.controller.BookController">
    <children>
-      <Pane layoutX="32.0" layoutY="32.0" prefHeight="204.0" prefWidth="379.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="27.0">
+      <Pane layoutX="40.0" layoutY="58.0" prefHeight="203.0" prefWidth="379.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="58.0">
          <children>
-            <TextField fx:id="textName" layoutX="66.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="174.0" />
-            <Label layoutX="10.0" layoutY="36.0" text="Название" />
-            <Label layoutX="10.0" layoutY="71.0" text="Автор" />
-            <ComboBox fx:id="comboBoxAuthor" layoutX="78.0" layoutY="67.0" prefWidth="150.0" />
-            <Label layoutX="10.0" layoutY="101.0" text="Издательство" />
-            <ComboBox fx:id="comboBoxPublisher" layoutX="88.0" layoutY="97.0" prefWidth="150.0" />
-            <Label layoutX="10.0" layoutY="131.0" text="Жанр" />
-            <ComboBox fx:id="comboBoxGenre" layoutX="88.0" layoutY="127.0" prefWidth="150.0" />
-            <TextField fx:id="textYear" layoutX="66.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="174.0" />
-            <Label layoutX="10.0" layoutY="166.0" text="Год" />
+            <Label fx:id="text_label" layoutX="11.0" layoutY="42.0" text="Автор" />
+            <ComboBox fx:id="comboBoxAuthor" layoutX="140.0" layoutY="38.0" prefHeight="25.0" prefWidth="255.0" />
+            <Label fx:id="text_label" layoutX="11.0" layoutY="81.0" text="Издательство" />
+            <ComboBox fx:id="comboBoxPublisher" layoutX="140.0" layoutY="73.0" prefHeight="25.0" prefWidth="255.0" />
+            <Label fx:id="text_label" layoutX="11.0" layoutY="122.0" text="Жанр" />
+            <ComboBox fx:id="comboBoxGenre" layoutX="140.0" layoutY="108.0" prefHeight="25.0" prefWidth="255.0" />
+            <TextField fx:id="textYear" layoutX="140.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="255.0" />
+            <Label fx:id="text_label" layoutX="11.0" layoutY="148.0" text="Год" />
+            <TextField fx:id="textName" layoutX="140.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="255.0" />
+            <Label fx:id="text_label" layoutX="11.0" layoutY="6.0" text="Название" />
          </children>
       </Pane>
-      <ButtonBar layoutX="251.0" layoutY="236.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="236.0">
+      <Pane layoutX="23.0" layoutY="18.0" prefHeight="39.0" prefWidth="263.0">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons/png/info.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="main_label" layoutX="28.0" layoutY="7.0" text="Регистрация книги" />
+         </children>
+      </Pane>
+      <ButtonBar layoutX="66.0" layoutY="255.0" prefHeight="40.0" prefWidth="395.0">
          <buttons>
-            <Button mnemonicParsing="false" onAction="#addNewBook" text="Добавить" />
-            <Button mnemonicParsing="false" onAction="#cancelEvent" prefHeight="26.0" prefWidth="63.0" text="Отмена" />
+            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="18.0" prefWidth="139.0" text="Добавить">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
+            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="18.0" text="Отмена">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
          </buttons>
       </ButtonBar>
    </children>

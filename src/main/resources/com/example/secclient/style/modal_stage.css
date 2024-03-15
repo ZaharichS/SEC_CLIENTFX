@@ -1,3 +1,50 @@
+@font-face {
+    font-family: "Rubik Bold";
+    src: url("../font/Rubik-Bold.ttf");
+}
+@font-face {
+    font-family: "Rubik Regular";
+    src: url("../font/Rubik-Regular.ttf");
+}
+@font-face {
+    font-family: "Rubik SemiBold";
+    src: url("../font/Rubik-SemiBold.ttf");
+}
+
 .background {
+    -fx-background-image: url("../image/icons/png/Wave_background_modalA.png");
     -fx-background-color: #456990;
+}
+#main_label {
+    -fx-text-fill: white;
+    -fx-font-family: "Rubik Bold";
+    -fx-font-size: 20px;
+}
+#text_label {
+    -fx-text-fill: white;
+    -fx-font-family: "Rubik Bold";
+    -fx-font-size: 15px;
+}
+#button {
+    -fx-text-fill: #24476D;
+    -fx-font-size: 13px;
+    -fx-font-family: "Rubik Bold";
+
+    -fx-effect: dropshadow( gaussian , rgba(237, 237, 237, 0.55), 0, 0,0,4 );
+
+    -fx-background-color: #EDEDED;
+
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-width: 2;
+    -fx-border-style: none none none none;
+}
+#ComboBoxCity1, #comboBoxAuthor, #comboBoxPublisher, #comboBoxGenre {
+    -fx-text-fill: white;
+    -fx-font-family: "Rubik Regular";
+    -fx-font-size: 11.5px;
+    -fx-background-color: white;
+}
+#bookModal {
+    -fx-background-image: url("../image/icons/png/Wave_background_modalBook.png");
 }

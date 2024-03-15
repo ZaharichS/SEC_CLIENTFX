@@ -6,25 +6,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="252.0" prefWidth="420.0" styleClass="background" stylesheets="@../style/modal_stage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.secclient.controller.GenreController">
+<AnchorPane prefHeight="328.0" prefWidth="636.0" styleClass="background" stylesheets="@../style/modal_stage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.secclient.controller.GenreController">
    <children>
-      <Pane layoutX="30.0" layoutY="7.0" prefHeight="117.0" prefWidth="200.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="17.0">
+      <Pane layoutX="13.0" layoutY="8.0" prefHeight="39.0" prefWidth="263.0">
          <children>
-            <TextField fx:id="textName" layoutX="66.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="130.0" />
-            <Label layoutX="10.0" layoutY="36.0" text="Название" />
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons/png/info.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="main_label" layoutX="28.0" layoutY="7.0" text="Регистрация жанра" />
          </children>
       </Pane>
-      <ListView fx:id="dataList" layoutX="230.0" layoutY="21.0" prefHeight="176.0" prefWidth="172.0" AnchorPane.rightAnchor="18.0" />
-      <ButtonBar layoutX="17.0" layoutY="127.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="130.0">
+      <Pane layoutX="20.0" layoutY="106.0" prefHeight="58.0" prefWidth="237.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="106.0">
+         <children>
+            <TextField fx:id="textName" layoutX="86.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="143.0" />
+            <Label fx:id="text_label" layoutX="16.0" layoutY="14.0" text="Жанр" />
+         </children>
+      </Pane>
+      <ButtonBar layoutX="55.0" layoutY="171.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="171.0">
          <buttons>
-            <Button mnemonicParsing="false" onAction="#addNewGenre" text="Добавить" />
-            <Button mnemonicParsing="false" onAction="#deleteCityGenre" text="Удалить" />
+            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Добавить">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
+            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Удалить">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
          </buttons>
       </ButtonBar>
-      <Button layoutX="340.0" layoutY="210.0" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="26.0" prefWidth="63.0" text="Отмена" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="17.0" />
+      <ListView fx:id="dataList" layoutX="262.0" layoutY="50.0" prefHeight="252.0" prefWidth="339.0" AnchorPane.rightAnchor="12.0" />
+      <Button fx:id="button" layoutX="153.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="374.0">
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+      </Button>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
