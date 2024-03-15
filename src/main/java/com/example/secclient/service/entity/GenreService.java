@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 public class GenreService {
 
@@ -27,7 +28,7 @@ public class GenreService {
     Запоминаем тип данных DataResponse и ListResponse
      */
     private Type dataType = new TypeToken<DataResponse<Genre>>() {}.getType();
-    private Type listType = new TypeToken<DataResponse<Genre>>() {}.getType();
+    private Type listType = new TypeToken<ListResponse<Genre>>() {}.getType();
 
     public void getAll() {
         ListResponse<Genre> genreList = new ListResponse<>();

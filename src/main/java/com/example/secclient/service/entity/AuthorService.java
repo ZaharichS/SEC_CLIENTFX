@@ -26,11 +26,11 @@ public class AuthorService {
     Запоминаем тип данных DataResponse и ListResponse
      */
     private Type dataType = new TypeToken<DataResponse<Author>>() {}.getType();
-    private Type listType = new TypeToken<DataResponse<Author>>() {}.getType();
+    private Type listType = new TypeToken<ListResponse<Author>>() {}.getType();
 
     public void getAll() {
         ListResponse<Author> authorList = new ListResponse<>();
-        authorList = json.getObject(httpService.get(client_property.getAllBook()), listType);
+        authorList = json.getObject(httpService.get(client_property.getAllAuthor()), listType);
         if (authorList.isStatus()) {
             this.authors.addAll(authorList.getData());
             this.authors.forEach(System.out::println);

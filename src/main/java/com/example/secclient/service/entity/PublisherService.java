@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 public class PublisherService {
 
@@ -27,7 +28,7 @@ public class PublisherService {
     Запоминаем тип данных DataResponse и ListResponse
      */
     private Type dataType = new TypeToken<DataResponse<Publisher>>() {}.getType();
-    private Type listType = new TypeToken<DataResponse<Publisher>>() {}.getType();
+    private Type listType = new TypeToken<ListResponse<Publisher>>() {}.getType();
 
     public void getAll() {
         ListResponse<Publisher> publisherList = new ListResponse<>();

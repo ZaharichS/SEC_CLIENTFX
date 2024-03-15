@@ -31,12 +31,12 @@
       </Pane>
       <ButtonBar layoutX="55.0" layoutY="171.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="171.0">
          <buttons>
-            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Добавить">
+            <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewCity" prefHeight="22.0" prefWidth="105.0" text="Добавить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
             </Button>
-            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Удалить">
+            <Button fx:id="buttonDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteCity" prefHeight="22.0" prefWidth="105.0" text="Удалить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
@@ -44,7 +44,7 @@
          </buttons>
       </ButtonBar>
       <ListView fx:id="dataList" layoutX="262.0" layoutY="50.0" prefHeight="252.0" prefWidth="339.0" AnchorPane.rightAnchor="12.0" />
-      <Button fx:id="button" layoutX="153.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="374.0">
+      <Button fx:id="buttonCancel" layoutX="155.0" layoutY="283.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="372.0">
          <padding>
             <Insets bottom="5.0" />
          </padding>

@@ -1,11 +1,14 @@
 package com.example.secclient.controller;
 
+import com.example.secclient.service.entity.BookService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class BookController {
+
+    private final BookService service = new BookService();
 
     @FXML
     private ComboBox<?> comboBoxAuthor;

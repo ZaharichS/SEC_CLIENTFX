@@ -47,28 +47,28 @@ public class MainController {
     }
 
     @FXML
-    void addBookAction(ActionEvent event) {
-        //System.out.println(service.get("http://localhost:28245/api/v1/book/all"));
+    void callBookModal(ActionEvent event) {
+        MainApplication.showBookModal();
     }
 
     @FXML
-    void addOrChangeAuthorAction(ActionEvent event) {
-
+    void callAuthorModal(ActionEvent event) {
+        MainApplication.showAuthorModal();
     }
 
     @FXML
-    void addOrChangeCityAction(ActionEvent event) {
-
+    void callCityModal(ActionEvent event) {
+        MainApplication.showCityModal();
     }
 
     @FXML
-    void addOrChangeGenreAction(ActionEvent event) {
-
+    void callGenreModal(ActionEvent event) {
+        MainApplication.showGenreModal();
     }
 
     @FXML
-    void addOrChangePublisherAction(ActionEvent event) {
-
+    void callPublisherModal(ActionEvent event) {
+        MainApplication.showPublisherModal();
     }
 
     @FXML

@@ -28,18 +28,18 @@
             <TextField fx:id="textName" layoutX="86.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="143.0" />
             <TextField fx:id="textSurname" layoutX="86.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="142.0" />
             <TextField fx:id="textLastName" layoutX="86.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="141.0" />
-            <Label fx:id="text_label" layoutX="16.0" layoutY="14.0" text="Имя" />
-            <Label fx:id="text_label" layoutX="4.0" layoutY="50.0" text="Фамилия" />
-            <Label fx:id="text_label" layoutX="6.0" layoutY="87.0" text="Отчество" />
+            <Label fx:id="text_labelName" layoutX="16.0" layoutY="14.0" text="Имя" />
+            <Label fx:id="text_labelSurname" layoutX="4.0" layoutY="50.0" text="Фамилия" />
+            <Label fx:id="text_labelLastname" layoutX="6.0" layoutY="87.0" text="Отчество" />
          </children>
       </Pane>
       <ButtonBar layoutX="55.0" layoutY="171.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.topAnchor="171.0">
         <buttons>
-          <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Добавить">
+          <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Добавить">
                <padding>
                   <Insets bottom="1.0" />
                </padding></Button>
-            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="22.0" prefWidth="105.0" text="Удалить">
+            <Button fx:id="buttonDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteAuthor" prefHeight="22.0" prefWidth="105.0" text="Удалить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
@@ -47,7 +47,7 @@
         </buttons>
       </ButtonBar>
       <ListView fx:id="dataList" layoutX="275.0" layoutY="51.0" prefHeight="252.0" prefWidth="339.0" AnchorPane.rightAnchor="27.0" />
-      <Button fx:id="button" layoutX="153.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="374.0">
+      <Button fx:id="buttonCancel" layoutX="153.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="374.0">
          <padding>
             <Insets bottom="5.0" />
          </padding></Button>

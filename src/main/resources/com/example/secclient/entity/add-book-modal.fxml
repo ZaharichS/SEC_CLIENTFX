@@ -15,16 +15,16 @@
    <children>
       <Pane layoutX="40.0" layoutY="58.0" prefHeight="203.0" prefWidth="379.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Label fx:id="text_label" layoutX="11.0" layoutY="42.0" text="Автор" />
+            <Label fx:id="text_labelName" layoutX="11.0" layoutY="42.0" text="Автор" />
             <ComboBox fx:id="comboBoxAuthor" layoutX="140.0" layoutY="38.0" prefHeight="25.0" prefWidth="255.0" />
-            <Label fx:id="text_label" layoutX="11.0" layoutY="81.0" text="Издательство" />
+            <Label fx:id="text_labelPub" layoutX="11.0" layoutY="81.0" text="Издательство" />
             <ComboBox fx:id="comboBoxPublisher" layoutX="140.0" layoutY="73.0" prefHeight="25.0" prefWidth="255.0" />
-            <Label fx:id="text_label" layoutX="11.0" layoutY="122.0" text="Жанр" />
+            <Label fx:id="text_labelGen" layoutX="11.0" layoutY="122.0" text="Жанр" />
             <ComboBox fx:id="comboBoxGenre" layoutX="140.0" layoutY="108.0" prefHeight="25.0" prefWidth="255.0" />
             <TextField fx:id="textYear" layoutX="140.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="255.0" />
-            <Label fx:id="text_label" layoutX="11.0" layoutY="148.0" text="Год" />
+            <Label fx:id="text_labelYear" layoutX="11.0" layoutY="148.0" text="Год" />
             <TextField fx:id="textName" layoutX="140.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="255.0" />
-            <Label fx:id="text_label" layoutX="11.0" layoutY="6.0" text="Название" />
+            <Label fx:id="text_labelTitle" layoutX="11.0" layoutY="6.0" text="Название" />
          </children>
       </Pane>
       <Pane layoutX="23.0" layoutY="18.0" prefHeight="39.0" prefWidth="263.0">
@@ -39,12 +39,12 @@
       </Pane>
       <ButtonBar layoutX="66.0" layoutY="255.0" prefHeight="40.0" prefWidth="395.0">
          <buttons>
-            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="18.0" prefWidth="139.0" text="Добавить">
+            <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewBook" prefHeight="18.0" prefWidth="139.0" text="Добавить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
             </Button>
-            <Button fx:id="button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewAuthor" prefHeight="18.0" text="Отмена">
+            <Button fx:id="buttonCancel" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="18.0" text="Отмена">
                <padding>
                   <Insets bottom="1.0" />
                </padding>

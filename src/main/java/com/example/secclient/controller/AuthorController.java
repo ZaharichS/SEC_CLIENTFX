@@ -1,5 +1,7 @@
 package com.example.secclient.controller;
 
+import com.example.secclient.entity.Author;
+import com.example.secclient.service.entity.AuthorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -7,8 +9,10 @@ import javafx.scene.control.TextField;
 
 public class AuthorController {
 
+    private final AuthorService service = new AuthorService();
+
     @FXML
-    private ListView<?> dataList;
+    private ListView<Author> dataList;
 
     @FXML
     private TextField textLastName;
@@ -18,6 +22,12 @@ public class AuthorController {
 
     @FXML
     private TextField textSurname;
+
+    @FXML
+    private void initialize() {
+        service.getAll();
+        dataList.setItems(service.getAuthors());
+    }
 
     @FXML
     void addNewAuthor(ActionEvent event) {

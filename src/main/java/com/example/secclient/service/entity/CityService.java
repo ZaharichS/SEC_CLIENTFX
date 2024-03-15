@@ -26,7 +26,7 @@ public class CityService {
     Запоминаем тип данных DataResponse и ListResponse
      */
     private Type dataType = new TypeToken<DataResponse<City>>() {}.getType();
-    private Type listType = new TypeToken<DataResponse<City>>() {}.getType();
+    private Type listType = new TypeToken<ListResponse<City>>() {}.getType();
 
     public void getAll() {
         ListResponse<City> cityList = new ListResponse<>();
