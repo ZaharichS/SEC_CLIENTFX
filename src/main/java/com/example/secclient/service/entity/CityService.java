@@ -1,5 +1,6 @@
 package com.example.secclient.service.entity;
 
+import com.example.secclient.entity.Author;
 import com.example.secclient.entity.City;
 import com.example.secclient.response.BaseResponse;
 import com.example.secclient.response.DataResponse;
@@ -13,6 +14,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
 
 public class CityService {
 
@@ -33,7 +35,7 @@ public class CityService {
         cityList = json.getObject(httpService.get(client_property.getAllCity()), listType);
         if (cityList.isStatus()) {
             this.cities.addAll(cityList.getData());
-            this.cities.forEach(System.out::println);
+            sortByCity();
         } else {
             throw new RuntimeException(cityList.getStatus_text());
         }
@@ -44,17 +46,19 @@ public class CityService {
         DataResponse<City> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
             this.cities.add(response.getData());
+            sortByCity();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
     }
 
-    public void update(City city) {
-        String tempData = httpService.put(client_property.getUpdateCity(), json.getJson(city));
+    public void update(City city_main, City city_new) {
+        String tempData = httpService.put(client_property.getUpdateCity(), json.getJson(city_new));
         DataResponse<City> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.cities.remove(city);
-            this.cities.add(response.getData());
+            this.cities.remove(city_main);
+            this.cities.add(city_new);
+            sortByCity();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
@@ -78,5 +82,10 @@ public class CityService {
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
+    }
+
+    // Сортировка по городу
+    private void sortByCity() {
+        cities.sort(Comparator.comparing(City::getTitle));
     }
 }

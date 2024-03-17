@@ -20,6 +20,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return lastname + " " +  name + " " + surname;
+        return surname + " " +  name + " " + lastname;
     }
 }

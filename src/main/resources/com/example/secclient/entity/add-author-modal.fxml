@@ -46,7 +46,7 @@
             </Button>
         </buttons>
       </ButtonBar>
-      <ListView fx:id="dataList" layoutX="275.0" layoutY="51.0" prefHeight="252.0" prefWidth="339.0" AnchorPane.rightAnchor="27.0" />
+      <ListView fx:id="dataList" layoutX="275.0" layoutY="51.0" onMouseClicked="#onMouseClickDataList" prefHeight="252.0" prefWidth="339.0" AnchorPane.rightAnchor="27.0" />
       <Button fx:id="buttonCancel" layoutX="153.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="19.0" prefWidth="109.0" text="Отмена" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="374.0">
          <padding>
             <Insets bottom="5.0" />

@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
 import java.util.List;
 
 public class GenreService {
@@ -36,6 +37,7 @@ public class GenreService {
         if (genreList.isStatus()) {
             this.genres.addAll(genreList.getData());
             this.genres.forEach(System.out::println);
+            sortByGenre();
         } else {
             throw new RuntimeException(genreList.getStatus_text());
         }
@@ -46,17 +48,19 @@ public class GenreService {
         DataResponse<Genre> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
             this.genres.add(response.getData());
+            sortByGenre();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
     }
 
-    public void update(Genre genre) {
-        String tempData = httpService.put(client_property.getUpdateGenre(), json.getJson(genre));
+    public void update(Genre genre_main, Genre genre_new) {
+        String tempData = httpService.put(client_property.getUpdateGenre(), json.getJson(genre_new));
         DataResponse<Genre> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.genres.remove(genre);
-            this.genres.add(response.getData());
+            this.genres.remove(genre_main);
+            this.genres.add(genre_new);
+            sortByGenre();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
@@ -80,5 +84,10 @@ public class GenreService {
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
+    }
+
+    // Сортировка по жанру
+    private void sortByGenre() {
+        genres.sort(Comparator.comparing(Genre::getTitle));
     }
 }

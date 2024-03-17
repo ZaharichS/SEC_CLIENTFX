@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
 
 public class AuthorService {
 
@@ -33,7 +34,7 @@ public class AuthorService {
         authorList = json.getObject(httpService.get(client_property.getAllAuthor()), listType);
         if (authorList.isStatus()) {
             this.authors.addAll(authorList.getData());
-            this.authors.forEach(System.out::println);
+            sortBySurname();
         } else {
             throw new RuntimeException(authorList.getStatus_text());
         }
@@ -44,17 +45,19 @@ public class AuthorService {
         DataResponse<Author> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
             this.authors.add(response.getData());
+            sortBySurname();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
     }
 
-    public void update(Author author) {
-        String tempData = httpService.put(client_property.getUpdateAuthor(), json.getJson(author));
+    public void update(Author author_main, Author author_new) {
+        String tempData = httpService.put(client_property.getUpdateAuthor(), json.getJson(author_new));
         DataResponse<Author> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.authors.remove(author);
-            this.authors.add(response.getData());
+            this.authors.remove(author_main);
+            this.authors.add(author_new);
+            sortBySurname();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
@@ -78,5 +81,10 @@ public class AuthorService {
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
+    }
+
+    // Сортировка по фамилии
+    private void sortBySurname() {
+        authors.sort(Comparator.comparing(Author::getSurname));
     }
 }
