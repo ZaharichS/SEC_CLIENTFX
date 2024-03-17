@@ -51,3 +51,6 @@
 #bookModal {
     -fx-background-image: url("../image/icons/png/Wave_background_modalBook.png");
 }
+.alert {
+    -fx-background-color: black;
+}

@@ -25,11 +25,11 @@
       </Pane>
       <Pane layoutX="28.0" layoutY="55.0" prefHeight="126.0" prefWidth="237.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="50.0">
          <children>
-            <TextField fx:id="textName" layoutX="86.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="143.0" />
-            <TextField fx:id="textSurname" layoutX="86.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="142.0" />
+            <TextField fx:id="textSurname" layoutX="86.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="143.0" />
+            <TextField fx:id="textName" layoutX="86.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="142.0" />
             <TextField fx:id="textLastName" layoutX="86.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="141.0" />
-            <Label fx:id="text_labelName" layoutX="16.0" layoutY="14.0" text="Имя" />
-            <Label fx:id="text_labelSurname" layoutX="4.0" layoutY="50.0" text="Фамилия" />
+            <Label fx:id="text_labelName" layoutX="6.0" layoutY="14.0" text="Фамилия" />
+            <Label fx:id="text_labelSurname" layoutX="4.0" layoutY="50.0" text="Имя" />
             <Label fx:id="text_labelLastname" layoutX="6.0" layoutY="87.0" text="Отчество" />
          </children>
       </Pane>

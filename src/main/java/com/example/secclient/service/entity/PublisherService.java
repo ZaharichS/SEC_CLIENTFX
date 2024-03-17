@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
 import java.util.List;
 
 public class PublisherService {
@@ -36,6 +37,7 @@ public class PublisherService {
         if (publisherList.isStatus()) {
             this.publishers.addAll(publisherList.getData());
             this.publishers.forEach(System.out::println);
+            sortByPublisher();
         } else {
             throw new RuntimeException(publisherList.getStatus_text());
         }
@@ -46,17 +48,19 @@ public class PublisherService {
         DataResponse<Publisher> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
             this.publishers.add(response.getData());
+            sortByPublisher();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
     }
 
-    public void update(Publisher publisher) {
-        String tempData = httpService.put(client_property.getUpdatePublisher(), json.getJson(publisher));
+    public void update(Publisher publisher_main, Publisher publisher_new) {
+        String tempData = httpService.put(client_property.getUpdatePublisher(), json.getJson(publisher_new));
         DataResponse<Publisher> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.publishers.remove(publisher);
-            this.publishers.add(response.getData());
+            this.publishers.remove(publisher_main);
+            this.publishers.add(publisher_new);
+            sortByPublisher();
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
@@ -80,5 +84,10 @@ public class PublisherService {
         } else {
             throw new RuntimeException(response.getStatus_text());
         }
+    }
+
+    // Сортировка по изданию
+    private void sortByPublisher() {
+        publishers.sort(Comparator.comparing(Publisher::getTitle));
     }
 }

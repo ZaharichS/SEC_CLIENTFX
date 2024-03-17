@@ -21,6 +21,6 @@ public class Publisher {
 
     @Override
     public String toString() {
-        return title;
+        return title + "( г. " + city + " )";
     }
 }

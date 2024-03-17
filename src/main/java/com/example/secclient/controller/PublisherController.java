@@ -1,19 +1,28 @@
 package com.example.secclient.controller;
 
+import com.example.secclient.entity.City;
+import com.example.secclient.entity.Genre;
 import com.example.secclient.entity.Publisher;
+import com.example.secclient.service.entity.CityService;
 import com.example.secclient.service.entity.PublisherService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 public class PublisherController {
 
-    private final PublisherService service = new PublisherService();
+    private final PublisherService servicePublisher = new PublisherService();
+    private final CityService cityService = new CityService();
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private boolean flag = true;
 
     @FXML
-    private ComboBox<?> ComboBoxCity1;
+    private ComboBox<City> comboBoxCity1;
     @FXML
     private ListView<Publisher> dataList;
 
@@ -22,23 +31,60 @@ public class PublisherController {
 
     @FXML
     private void initialize() {
-        service.getAll();
-        dataList.setItems(service.getPublishers());
+        cityService.getAll();
+        servicePublisher.getAll();
+
+        dataList.setItems(servicePublisher.getPublishers());
+        comboBoxCity1.setItems(cityService.getCities());
     }
 
     @FXML
     void addNewPublisher(ActionEvent event) {
+        Publisher publisher = new Publisher();
+        publisher.setTitle(textName.getText());
+        publisher.setCity(comboBoxCity1.getSelectionModel().getSelectedItem());
 
+        if (flag) {
+            servicePublisher.add(publisher);
+        } else {
+            publisher.setId(dataList.getSelectionModel().getSelectedItem().getId());
+            servicePublisher.update(publisher, dataList.getSelectionModel().getSelectedItem());
+        }
+        textName.clear();
+        comboBoxCity1.valueProperty().set(null);
+
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные добавленны ");
+        alert.showAndWait();
+    }
+
+    // Выбор издания по двойному клику
+    @FXML
+    void onMouseClickDataList(MouseEvent event) {
+        if (event.getButton().equals(MouseButton.PRIMARY)){
+            if(event.getClickCount() == 2) {
+                flag = false;
+                Publisher tempPublisher = dataList.getSelectionModel().getSelectedItem();
+                textName.setText(tempPublisher.getTitle());
+                comboBoxCity1.getSelectionModel().select(tempPublisher.getCity());
+            }
+        }
     }
 
     @FXML
     void cancelEvent(ActionEvent event) {
-
+        flag = true;
+        textName.clear();
+        comboBoxCity1.valueProperty().set(null);
     }
 
     @FXML
     void deletePublisher(ActionEvent event) {
-
+        servicePublisher.delete(dataList.getSelectionModel().getSelectedItem());
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные были удалены!");
+        alert.setContentText("Перезайдите в регистрацию.");
+        alert.showAndWait();
     }
 
 }

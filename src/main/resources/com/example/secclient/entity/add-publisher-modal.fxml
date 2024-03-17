@@ -16,10 +16,10 @@
    <children>
       <Pane layoutX="33.0" layoutY="67.0" prefHeight="117.0" prefWidth="228.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="62.0">
          <children>
-            <ComboBox fx:id="ComboBoxCity1" layoutX="62.0" layoutY="65.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="168.0" />
-            <Label fx:id="text_labelAuthor" layoutX="-6.0" layoutY="67.0" text="Автор" />
-            <TextField fx:id="textName" layoutX="64.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="168.0" />
-            <Label fx:id="text_label" layoutX="-6.0" layoutY="27.0" text="Имя" />
+            <ComboBox fx:id="comboBoxCity1" layoutX="72.0" layoutY="65.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="168.0" />
+            <Label fx:id="text_labelAuthor" layoutX="-6.0" layoutY="67.0" text="Город" />
+            <TextField fx:id="textName" layoutX="74.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="168.0" />
+            <Label fx:id="text_label" layoutX="-6.0" layoutY="27.0" text="Название" />
          </children>
       </Pane>
       <Pane layoutX="23.0" layoutY="18.0" prefHeight="39.0" prefWidth="263.0">
@@ -32,7 +32,7 @@
             <Label fx:id="main_label" layoutX="28.0" layoutY="7.0" text="Регистрация издания" />
          </children>
       </Pane>
-      <ListView fx:id="dataList" layoutX="273.0" layoutY="57.0" prefHeight="252.0" prefWidth="339.0" />
+      <ListView fx:id="dataList" layoutX="283.0" layoutY="57.0" onMouseClicked="#onMouseClickDataList" prefHeight="252.0" prefWidth="339.0" />
       <ButtonBar layoutX="64.0" layoutY="181.0" prefHeight="40.0" prefWidth="200.0">
          <buttons>
             <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewPublisher" prefHeight="22.0" prefWidth="105.0" text="Добавить">
