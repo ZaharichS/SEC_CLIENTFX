@@ -10,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Optional;
+
 public class MainController {
 
     @FXML
@@ -48,7 +50,8 @@ public class MainController {
 
     @FXML
     void callBookModal(ActionEvent event) {
-        MainApplication.showBookModal();
+        Optional<Book> book = Optional.empty();
+        MainApplication.showBookModal(book);
     }
 
     @FXML

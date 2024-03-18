@@ -5,6 +5,7 @@ import com.example.secclient.entity.Genre;
 import com.example.secclient.service.entity.GenreService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -14,6 +15,7 @@ public class GenreController {
 
     private final GenreService service = new GenreService();
     private boolean addFlag = true;
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
     private ListView<Genre> dataList;
@@ -37,6 +39,10 @@ public class GenreController {
             genre.setId(dataList.getSelectionModel().getSelectedItem().getId());
             service.update(genre, dataList.getSelectionModel().getSelectedItem());
         }
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные добавленны");
+        alert.showAndWait();
+
         textName.clear();
     }
 
@@ -69,6 +75,11 @@ public class GenreController {
             tempGenre.setId(dataList.getSelectionModel().getSelectedItem().getId());
             service.delete(tempGenre);
         }
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные были удалены!");
+        alert.setContentText("Перезайдите в регистрацию.");
+        alert.showAndWait();
+
         textName.clear();
     }
 

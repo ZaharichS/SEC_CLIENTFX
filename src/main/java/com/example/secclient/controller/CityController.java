@@ -5,6 +5,7 @@ import com.example.secclient.entity.City;
 import com.example.secclient.service.entity.CityService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -14,6 +15,7 @@ public class CityController {
 
     private final CityService service = new CityService();
     private boolean addFlag = true;
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
     private ListView<City> dataList;
@@ -37,6 +39,11 @@ public class CityController {
             city.setId(dataList.getSelectionModel().getSelectedItem().getId());
             service.update(city, dataList.getSelectionModel().getSelectedItem());
         }
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные добавленны");
+        alert.showAndWait();
+
+        textName.clear();
         textName.clear();
     }
 
@@ -69,6 +76,11 @@ public class CityController {
             tempCity.setId(dataList.getSelectionModel().getSelectedItem().getId());
             service.delete(tempCity);
         }
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные были удалены!");
+        alert.setContentText("Перезайдите в регистрацию.");
+        alert.showAndWait();
+
         textName.clear();
     }
 

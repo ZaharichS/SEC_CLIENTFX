@@ -50,12 +50,12 @@ public class PublisherController {
             publisher.setId(dataList.getSelectionModel().getSelectedItem().getId());
             servicePublisher.update(publisher, dataList.getSelectionModel().getSelectedItem());
         }
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные добавленны");
+        alert.showAndWait();
+
         textName.clear();
         comboBoxCity1.valueProperty().set(null);
-
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны ");
-        alert.showAndWait();
     }
 
     // Выбор издания по двойному клику

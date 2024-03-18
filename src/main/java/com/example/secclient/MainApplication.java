@@ -1,5 +1,7 @@
 package com.example.secclient;
 
+import com.example.secclient.controller.BookController;
+import com.example.secclient.entity.Book;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 public class MainApplication extends Application {
 
@@ -50,7 +53,7 @@ public class MainApplication extends Application {
             e.printStackTrace();
         }
     }
-    public static void showBookModal()  {
+    public static void showBookModal(Optional<Book> book)  {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApplication.class.getResource("entity/add-book-modal.fxml"));
@@ -58,6 +61,10 @@ public class MainApplication extends Application {
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Регистрация книги");
             dialogStage.initModality(Modality.WINDOW_MODAL);
+
+            BookController controller = loader.getController();
+            controller.setBook(book);
+            controller.start();
 
             dialogStage.setResizable(false);
             dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
@@ -69,7 +76,7 @@ public class MainApplication extends Application {
             e.printStackTrace();
         }
     }
-    public static void showCityModal()  {
+        public static void showCityModal()  {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApplication.class.getResource("entity/add-city-modal.fxml"));
