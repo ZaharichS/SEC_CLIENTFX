@@ -1,6 +1,7 @@
 package com.example.secclient;
 
 import com.example.secclient.entity.Book;
+import com.example.secclient.entity.Genre;
 import com.example.secclient.service.HttpService;
 import com.example.secclient.service.entity.BookService;
 import javafx.event.ActionEvent;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Optional;
 
@@ -20,6 +23,7 @@ public class MainController {
     BookService service = new BookService();
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private boolean addFlag = true;
 
     @FXML
     private TableColumn<Book, String> bookAuthor;
@@ -83,9 +87,11 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
-/*        bookTable.getItems().clear();
+        Optional<Book> book = Optional.ofNullable(bookTable.getSelectionModel().getSelectedItem());
+        MainApplication.showBookModal(book);
 
-        initialize();*/
+        bookTable.getItems().clear();
+        initialize();
     }
 
     @FXML

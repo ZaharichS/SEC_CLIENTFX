@@ -76,6 +76,7 @@ public class MainApplication extends Application {
             e.printStackTrace();
         }
     }
+
         public static void showCityModal()  {
         try {
             FXMLLoader loader = new FXMLLoader();
