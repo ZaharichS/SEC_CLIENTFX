@@ -80,6 +80,9 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
+        bookTable.getItems().clear();
+
+        initialize();
     }
 
     @FXML
@@ -90,7 +93,7 @@ public class MainController {
 
             alert.setTitle("Успешно");
             alert.setHeaderText("Данные удалены");
-            alert.setContentText("Для отображения новых данных перезапустите приложение");
+            alert.setContentText("Для отображения новых данных (Обновить)/(Перезапустить приложение))");
             alert.showAndWait();
         } else {
             alert.setTitle("Ничего не выбрано");
