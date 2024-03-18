@@ -45,6 +45,8 @@ public class CityController {
 
         textName.clear();
         textName.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
     // Выбор города по двойному клику
@@ -78,10 +80,11 @@ public class CityController {
         }
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные были удалены!");
-        alert.setContentText("Перезайдите в регистрацию.");
         alert.showAndWait();
 
         textName.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
 }

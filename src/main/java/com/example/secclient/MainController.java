@@ -56,6 +56,9 @@ public class MainController {
     void callBookModal(ActionEvent event) {
         Optional<Book> book = Optional.empty();
         MainApplication.showBookModal(book);
+
+        bookTable.getItems().clear();
+        initialize();
     }
 
     @FXML
@@ -80,9 +83,9 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
-        bookTable.getItems().clear();
+/*        bookTable.getItems().clear();
 
-        initialize();
+        initialize();*/
     }
 
     @FXML
@@ -93,8 +96,10 @@ public class MainController {
 
             alert.setTitle("Успешно");
             alert.setHeaderText("Данные удалены");
-            alert.setContentText("Для отображения новых данных (Обновить)/(Перезапустить приложение))");
             alert.showAndWait();
+
+            bookTable.getItems().clear();
+            initialize();
         } else {
             alert.setTitle("Ничего не выбрано");
             alert.setHeaderText("Отсутствует выбранная книга ");

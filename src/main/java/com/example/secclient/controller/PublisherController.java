@@ -56,6 +56,8 @@ public class PublisherController {
 
         textName.clear();
         comboBoxCity1.valueProperty().set(null);
+        dataList.getItems().clear();
+        initialize();
     }
 
     // Выбор издания по двойному клику
@@ -83,8 +85,12 @@ public class PublisherController {
         servicePublisher.delete(dataList.getSelectionModel().getSelectedItem());
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные были удалены!");
-        alert.setContentText("Перезайдите в регистрацию.");
         alert.showAndWait();
+
+        textName.clear();
+        comboBoxCity1.valueProperty().set(null);
+        dataList.getItems().clear();
+        initialize();
     }
 
 }

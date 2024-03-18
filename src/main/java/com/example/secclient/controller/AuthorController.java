@@ -56,6 +56,8 @@ public class AuthorController {
         textLastName.clear();
         textName.clear();
         textSurname.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
     // Выбор автора по двойному клику
@@ -94,12 +96,13 @@ public class AuthorController {
         }
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные были удалены!");
-        alert.setContentText("Перезайдите в регистрацию.");
         alert.showAndWait();
 
         textLastName.clear();
         textName.clear();
         textSurname.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
 }

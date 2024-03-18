@@ -44,6 +44,8 @@ public class GenreController {
         alert.showAndWait();
 
         textName.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
     // Выбор жанра по двойному клику
@@ -77,10 +79,11 @@ public class GenreController {
         }
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные были удалены!");
-        alert.setContentText("Перезайдите в регистрацию.");
         alert.showAndWait();
 
         textName.clear();
+        dataList.getItems().clear();
+        initialize();
     }
 
 }
