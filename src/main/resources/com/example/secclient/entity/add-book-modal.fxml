@@ -49,6 +49,11 @@
                   <Insets bottom="1.0" />
                </padding>
             </Button>
+            <Button fx:id="buttonChange" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeBook" prefHeight="18.0" prefWidth="139.0" text="Изменить">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
          </buttons>
       </ButtonBar>
    </children>

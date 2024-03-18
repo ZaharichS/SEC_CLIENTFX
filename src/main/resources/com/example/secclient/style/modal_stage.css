@@ -27,7 +27,7 @@
     -fx-font-family: "Rubik Bold";
     -fx-font-size: 15px;
 }
-#button, #buttonAdd, #buttonDel, #buttonCancel
+#button, #buttonAdd, #buttonDel, #buttonCancel, #changeBook
 {
     -fx-text-fill: #24476D;
     -fx-font-size: 13px;

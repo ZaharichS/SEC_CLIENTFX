@@ -78,11 +78,27 @@ public class BookController {
         book.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
         book.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
-        /*bookService.add(book);*/
+        bookService.add(book);
 
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
-        alert.setContentText("Для отображения новых данных перезапустите приложение");
+        alert.showAndWait();
+
+    }
+
+    @FXML
+    void changeBook(ActionEvent event) {
+        Book book = new Book();
+        book.setTitle(textName.getText());
+        book.setYear(textYear.getText());
+        book.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
+        book.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
+        book.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
+
+        bookService.update(book);
+
+        alert.setTitle("Успешно");
+        alert.setHeaderText("Данные добавленны");
         alert.showAndWait();
 
     }
