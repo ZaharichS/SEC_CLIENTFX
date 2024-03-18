@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Optional;
@@ -54,6 +55,7 @@ public class BookController {
     }
 
     @Setter
+    @Getter
     private Optional<Book> book;
 
     public void start() {
@@ -76,7 +78,8 @@ public class BookController {
         book.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
         book.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
-        bookService.add(book);
+        /*bookService.add(book);*/
+
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
         alert.setContentText("Для отображения новых данных перезапустите приложение");

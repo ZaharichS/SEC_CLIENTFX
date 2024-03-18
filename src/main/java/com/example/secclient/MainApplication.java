@@ -16,10 +16,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class MainApplication extends Application {
+    private FXMLLoader fxmlLoader;
+    private static MainController mainController;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 840, 465);
         stage.setTitle("Your Book App");
         /*
@@ -29,6 +31,7 @@ public class MainApplication extends Application {
         stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("image/icons/png/main_icon.png"))));
         stage.setResizable(false);
 
+        mainController = fxmlLoader.getController();
         stage.setScene(scene);
         stage.show();
     }
@@ -43,8 +46,7 @@ public class MainApplication extends Application {
             dialogStage.initModality(Modality.WINDOW_MODAL);
 
             dialogStage.setResizable(false);
-            dialogStage.getIcons().add(
-                    new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
+            dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
 
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
@@ -57,21 +59,24 @@ public class MainApplication extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApplication.class.getResource("entity/add-book-modal.fxml"));
+
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Регистрация книги");
             dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setResizable(false);
+            dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
 
             BookController controller = loader.getController();
             controller.setBook(book);
             controller.start();
-
-            dialogStage.setResizable(false);
-            dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
-
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
+
+            book = controller.getBook();
+            System.out.println(book);
+            mainController.setBook(book);
         } catch (IOException e) {
             e.printStackTrace();
         }

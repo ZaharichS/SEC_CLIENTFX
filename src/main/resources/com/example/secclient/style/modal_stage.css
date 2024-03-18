@@ -54,3 +54,12 @@
 .alert {
     -fx-background-color: black;
 }
+
+.text-field {
+    -fx-font-family: "Rubik Regular";
+    -fx-font-size: 10px;
+}
+.list-view {
+    -fx-font-family: "Rubik Regular";
+    -fx-font-size: 15px;
+}
