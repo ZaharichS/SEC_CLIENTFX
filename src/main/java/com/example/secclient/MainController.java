@@ -5,6 +5,7 @@ import com.example.secclient.service.HttpService;
 import com.example.secclient.service.entity.BookService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +18,8 @@ public class MainController {
     @FXML
     private Button add_button;
     BookService service = new BookService();
+
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
     private TableColumn<Book, String> bookAuthor;
@@ -45,6 +48,7 @@ public class MainController {
         bookYear.setCellValueFactory(new PropertyValueFactory<Book, String>("year"));
         bookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
         bookPublish.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher"));
+
         bookTable.setItems(service.getBooks());
     }
 
@@ -76,12 +80,24 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
-
     }
 
     @FXML
     void deleteBookAction(ActionEvent event) {
+        Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
+        if (selectedBook != null) {
+            service.delete(selectedBook);
 
+            alert.setTitle("Успешно");
+            alert.setHeaderText("Данные удалены");
+            alert.setContentText("Для отображения новых данных перезапустите приложение");
+            alert.showAndWait();
+        } else {
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранная книга ");
+            alert.setContentText("Выберите книгу в таблице");
+            alert.showAndWait();
+        }
     }
 
 }

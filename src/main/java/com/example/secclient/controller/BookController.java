@@ -81,6 +81,7 @@ public class BookController {
         alert.setHeaderText("Данные добавленны");
         alert.setContentText("Для отображения новых данных перезапустите приложение");
         alert.showAndWait();
+
     }
 
     @FXML
