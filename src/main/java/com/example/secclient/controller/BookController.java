@@ -1,5 +1,6 @@
 package com.example.secclient.controller;
 
+import com.example.secclient.MainController;
 import com.example.secclient.entity.Author;
 import com.example.secclient.entity.Book;
 import com.example.secclient.entity.Genre;
@@ -94,7 +95,8 @@ public class BookController {
         temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
         temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
-        //book = Optional.of(temp);
+        book = Optional.of(temp);
+        bookService.update(temp);
 
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");

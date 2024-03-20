@@ -103,12 +103,13 @@ public class MainController {
     private Optional<Book> book = Optional.empty();
 
     public void setBook(Optional<Book> book) {
-        //this.book = book;
+        this.book = book;
         if (book.isPresent()) {
-            if (book.get().getId() != null)
+            if (book.get().getId() != null) {
                 service.update(book.get());
-             else
+            } else {
                 service.add(book.get());
+            }
         }
     }
 
