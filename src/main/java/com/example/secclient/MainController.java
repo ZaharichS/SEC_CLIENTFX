@@ -106,7 +106,7 @@ public class MainController {
         //this.book = book;
         if (book.isPresent()) {
             if (book.get().getId() != null)
-                MainApplication.showBookModal(book);
+                service.update(book.get());
              else
                 service.add(book.get());
         }
