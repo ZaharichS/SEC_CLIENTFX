@@ -1,5 +1,6 @@
 package com.example.secclient;
 
+import com.example.secclient.controller.BookController;
 import com.example.secclient.entity.Book;
 import com.example.secclient.entity.Genre;
 import com.example.secclient.service.HttpService;
@@ -54,6 +55,12 @@ public class MainController {
         bookPublish.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher"));
 
         bookTable.setItems(service.getBooks());
+    }
+
+    @FXML
+    void callRefreshFunc(ActionEvent event) {
+        bookTable.getItems().clear();
+        initialize();
     }
 
     @FXML

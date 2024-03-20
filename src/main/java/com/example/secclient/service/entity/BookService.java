@@ -53,7 +53,7 @@ public class BookService {
         String tempData = httpService.put(client_property.getUpdateBook(), json.getJson(book));
         DataResponse<Book> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.books.remove(book);
+            this.books.remove(response.getData());
             this.books.add(book);
         } else {
             throw new RuntimeException(response.getStatus_text());

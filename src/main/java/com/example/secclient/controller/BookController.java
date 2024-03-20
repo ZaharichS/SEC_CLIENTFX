@@ -100,7 +100,6 @@ public class BookController {
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
         alert.showAndWait();
-
     }
 
     @FXML
