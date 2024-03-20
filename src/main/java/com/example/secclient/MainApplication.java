@@ -3,7 +3,6 @@ package com.example.secclient;
 import com.example.secclient.controller.BookController;
 import com.example.secclient.entity.Book;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -31,8 +30,9 @@ public class MainApplication extends Application {
         stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("image/icons/png/main_icon.png"))));
         stage.setResizable(false);
 
-        mainController = fxmlLoader.getController();
         stage.setScene(scene);
+
+        mainController = fxmlLoader.getController();
         stage.show();
     }
 

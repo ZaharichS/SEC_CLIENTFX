@@ -1,6 +1,5 @@
 package com.example.secclient.controller;
 
-import com.example.secclient.MainController;
 import com.example.secclient.entity.Author;
 import com.example.secclient.entity.Book;
 import com.example.secclient.entity.Genre;
@@ -71,14 +70,14 @@ public class BookController {
 
     @FXML
     void addNewBook(ActionEvent event) {
-        Book book = new Book();
-        book.setTitle(textName.getText());
-        book.setYear(textYear.getText());
-        book.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
-        book.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
-        book.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
+        Book temp = new Book();
+        temp.setTitle(textName.getText());
+        temp.setYear(textYear.getText());
+        temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
+        temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
+        temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
-        bookService.add(book);
+        book = Optional.of(temp);
 
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
@@ -88,14 +87,14 @@ public class BookController {
 
     @FXML
     void changeBook(ActionEvent event) {
-        Book book = new Book();
-        book.setTitle(textName.getText());
-        book.setYear(textYear.getText());
-        book.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
-        book.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
-        book.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
+        Book temp = new Book();
+        temp.setTitle(textName.getText());
+        temp.setYear(textYear.getText());
+        temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
+        temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
+        temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
-        bookService.update(book);
+        //book = Optional.of(temp);
 
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
