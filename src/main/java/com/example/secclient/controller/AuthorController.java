@@ -43,6 +43,7 @@ public class AuthorController {
         author.setLastname(textLastName.getText());
         author.setName(textName.getText());
         author.setSurname(textSurname.getText());
+
         if (addFlag) {
             service.add(author);
         } else {

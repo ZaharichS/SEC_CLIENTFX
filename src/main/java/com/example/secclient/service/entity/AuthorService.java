@@ -51,11 +51,11 @@ public class AuthorService {
         }
     }
 
-    public void update(Author author_main, Author author_new) {
+    public void update(Author author_new, Author author_older) {
         String tempData = httpService.put(client_property.getUpdateAuthor(), json.getJson(author_new));
         DataResponse<Author> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.authors.remove(author_main);
+            this.authors.remove(author_older);
             this.authors.add(author_new);
             sortBySurname();
         } else {

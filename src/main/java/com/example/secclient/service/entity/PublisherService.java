@@ -54,11 +54,11 @@ public class PublisherService {
         }
     }
 
-    public void update(Publisher publisher_main, Publisher publisher_new) {
+    public void update(Publisher publisher_new, Publisher publisher_older) {
         String tempData = httpService.put(client_property.getUpdatePublisher(), json.getJson(publisher_new));
         DataResponse<Publisher> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.publishers.remove(publisher_main);
+            this.publishers.remove(publisher_older);
             this.publishers.add(publisher_new);
             sortByPublisher();
         } else {

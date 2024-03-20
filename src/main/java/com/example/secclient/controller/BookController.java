@@ -1,6 +1,6 @@
 package com.example.secclient.controller;
 
-import com.example.secclient.MainApplication;
+import com.example.secclient.MainController;
 import com.example.secclient.entity.Author;
 import com.example.secclient.entity.Book;
 import com.example.secclient.entity.Genre;

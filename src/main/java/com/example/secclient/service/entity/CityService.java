@@ -52,11 +52,11 @@ public class CityService {
         }
     }
 
-    public void update(City city_main, City city_new) {
+    public void update(City city_new, City city_older) {
         String tempData = httpService.put(client_property.getUpdateCity(), json.getJson(city_new));
         DataResponse<City> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.cities.remove(city_main);
+            this.cities.remove(city_older);
             this.cities.add(city_new);
             sortByCity();
         } else {

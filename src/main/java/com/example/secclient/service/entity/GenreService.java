@@ -54,11 +54,11 @@ public class GenreService {
         }
     }
 
-    public void update(Genre genre_main, Genre genre_new) {
+    public void update(Genre genre_new, Genre genre_older) {
         String tempData = httpService.put(client_property.getUpdateGenre(), json.getJson(genre_new));
         DataResponse<Genre> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
-            this.genres.remove(genre_main);
+            this.genres.remove(genre_older);
             this.genres.add(genre_new);
             sortByGenre();
         } else {
