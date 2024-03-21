@@ -5,6 +5,7 @@ import com.example.secclient.entity.Book;
 import com.example.secclient.entity.Genre;
 import com.example.secclient.service.HttpService;
 import com.example.secclient.service.entity.BookService;
+import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -67,7 +68,6 @@ public class MainController {
     void callBookModal(ActionEvent event) {
         Optional<Book> book = Optional.empty();
         MainApplication.showBookModal(book);
-
         bookTable.getItems().clear();
         initialize();
     }

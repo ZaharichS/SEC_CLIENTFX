@@ -74,6 +74,10 @@ public class MainApplication extends Application {
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
 
+            /*if (controller.addFlag()) {
+                dialogStage.close();
+            }*/
+
             book = controller.getBook();
             mainController.setBook(book);
         } catch (IOException e) {

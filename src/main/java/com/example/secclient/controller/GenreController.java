@@ -6,6 +6,7 @@ import com.example.secclient.service.entity.GenreService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -22,6 +23,9 @@ public class GenreController {
 
     @FXML
     private TextField textName;
+
+    @FXML
+    private Button buttonAdd;
 
     @FXML
     private void initialize() {
@@ -53,6 +57,7 @@ public class GenreController {
     void onMouseClickDataList(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
+                buttonAdd.setText("Изменить");
                 addFlag = false;
                 Genre tempGenre = dataList.getSelectionModel().getSelectedItem();
                 textName.setText(tempGenre.getTitle());
@@ -62,6 +67,7 @@ public class GenreController {
 
     @FXML
     void cancelEvent(ActionEvent event) {
+        buttonAdd.setText("Добавить");
         addFlag = true;
         textName.clear();
     }

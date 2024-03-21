@@ -7,10 +7,7 @@ import com.example.secclient.service.entity.CityService;
 import com.example.secclient.service.entity.PublisherService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -28,6 +25,9 @@ public class PublisherController {
 
     @FXML
     private TextField textName;
+
+    @FXML
+    private Button buttonAdd;
 
     @FXML
     private void initialize() {
@@ -65,6 +65,7 @@ public class PublisherController {
     void onMouseClickDataList(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
+                buttonAdd.setText("Изменить");
                 flag = false;
                 Publisher tempPublisher = dataList.getSelectionModel().getSelectedItem();
                 textName.setText(tempPublisher.getTitle());
@@ -75,6 +76,7 @@ public class PublisherController {
 
     @FXML
     void cancelEvent(ActionEvent event) {
+        buttonAdd.setText("Добавить");
         flag = true;
         textName.clear();
         comboBoxCity1.valueProperty().set(null);

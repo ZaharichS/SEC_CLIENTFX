@@ -1,5 +1,6 @@
 package com.example.secclient.controller;
 
+import com.example.secclient.MainApplication;
 import com.example.secclient.MainController;
 import com.example.secclient.entity.Author;
 import com.example.secclient.entity.Book;
@@ -9,11 +10,15 @@ import com.example.secclient.service.entity.AuthorService;
 import com.example.secclient.service.entity.BookService;
 import com.example.secclient.service.entity.GenreService;
 import com.example.secclient.service.entity.PublisherService;
+import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +32,8 @@ public class BookController {
     private final PublisherService publisherService = new PublisherService();
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+    boolean flag = true;
 
     @FXML
     private ComboBox<Author> comboBoxAuthor;
@@ -42,6 +49,15 @@ public class BookController {
 
     @FXML
     private TextField textYear;
+
+    @FXML
+    private Button buttonAdd;
+
+    private Stage dialogStage;
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
 
     @FXML
     private void initialize() {
@@ -79,15 +95,19 @@ public class BookController {
         temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
         book = Optional.of(temp);
-
+        setBook(book);
+        //bookService.add(temp);
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
         alert.showAndWait();
 
+        flag = false;
+//        dialogStage.close();
     }
 
     @FXML
     void changeBook(ActionEvent event) {
+        buttonAdd.setText("Изменить");
         Book temp = new Book();
         temp.setTitle(textName.getText());
         temp.setYear(textYear.getText());
@@ -96,7 +116,7 @@ public class BookController {
         temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
         book = Optional.of(temp);
-        bookService.update(temp);
+        setBook(book);
 
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
@@ -110,5 +130,8 @@ public class BookController {
         comboBoxAuthor.valueProperty().set(null);
         comboBoxGenre.valueProperty().set(null);
         comboBoxPublisher.valueProperty().set(null);
+    }
+    public boolean addFlag() {
+        return false;
     }
 }

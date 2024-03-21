@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
@@ -18,6 +19,7 @@ public class AuthorController {
     private final AuthorService service = new AuthorService();
     private boolean addFlag = true;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert_bad = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     private ListView<Author> dataList;
@@ -32,6 +34,9 @@ public class AuthorController {
     private TextField textSurname;
 
     @FXML
+    private Button buttonAdd;
+
+    @FXML
     private void initialize() {
         service.getAll();
         dataList.setItems(service.getAuthors());
@@ -40,12 +45,22 @@ public class AuthorController {
     @FXML
     void addNewAuthor(ActionEvent event) {
         Author author = new Author();
-        author.setLastname(textLastName.getText());
+        if ( textLastName.getText().isEmpty() || textLastName.getText().matches("[А-Я][а-я]{1,20}")) {
+            author.setLastname(textLastName.getText());
+        }
+
         author.setName(textName.getText());
         author.setSurname(textSurname.getText());
 
         if (addFlag) {
-            service.add(author);
+            try {
+                service.add(author);
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода фамилии");
+                alert_bad.setContentText("Поле фамилия не должно быть пустым\nФамилия должна начинаться с . . .");
+                alert_bad.showAndWait();
+            }
         } else {
             author.setId(dataList.getSelectionModel().getSelectedItem().getId());
             service.update(author, dataList.getSelectionModel().getSelectedItem());
@@ -61,11 +76,13 @@ public class AuthorController {
         initialize();
     }
 
+
     // Выбор автора по двойному клику
     @FXML
     void onMouseClickDataList(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
+                buttonAdd.setText("Изменить");
                 addFlag = false;
                 Author tempAuthor = dataList.getSelectionModel().getSelectedItem();
                 textLastName.setText(tempAuthor.getLastname());
@@ -77,6 +94,7 @@ public class AuthorController {
 
     @FXML
     void cancelEvent(ActionEvent event) {
+        buttonAdd.setText("Добавить");
         addFlag = true;
         textLastName.clear();
         textName.clear();
