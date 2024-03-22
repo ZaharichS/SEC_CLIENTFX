@@ -17,6 +17,8 @@ public class GenreController {
     private final GenreService service = new GenreService();
     private boolean addFlag = true;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert_bad = new Alert(Alert.AlertType.ERROR);
+
 
     @FXML
     private ListView<Genre> dataList;
@@ -36,20 +38,41 @@ public class GenreController {
     @FXML
     void addNewGenre(ActionEvent event) {
         Genre genre = new Genre();
-        genre.setTitle(textName.getText());
+        String errorMesage = "";
+
+        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+            genre.setTitle(textName.getText());
+        } else {
+            errorMesage += "\nполе Жанр должно выглядеть так: Классика";
+        }
         if (addFlag) {
-            service.add(genre);
+            try {
+                service.add(genre);
+                alert.setTitle("Успешно");
+                alert.setHeaderText("Данные добавленны");
+                alert.showAndWait();
+
+                textName.clear();
+                dataList.getItems().clear();
+                initialize();
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         } else {
             genre.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            service.update(genre, dataList.getSelectionModel().getSelectedItem());
+            try {
+                service.update(genre, dataList.getSelectionModel().getSelectedItem());
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны");
-        alert.showAndWait();
 
-        textName.clear();
-        dataList.getItems().clear();
-        initialize();
     }
 
     // Выбор жанра по двойному клику

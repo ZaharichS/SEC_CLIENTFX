@@ -32,6 +32,8 @@ public class BookController {
     private final PublisherService publisherService = new PublisherService();
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert_bad = new Alert(Alert.AlertType.ERROR);
+
 
     boolean flag = true;
 
@@ -90,18 +92,33 @@ public class BookController {
         Book temp = new Book();
         temp.setTitle(textName.getText());
         temp.setYear(textYear.getText());
+        String errorMesage = "";
+
+        if ( textYear.getText().isEmpty() || textYear.getText().matches("[0-9]{4}")) {
+            temp.setTitle(textYear.getText());
+        } else {
+            errorMesage += "\nполе Год должно выглядеть так: 2015";
+        }
         temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
         temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
         temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
 
         book = Optional.of(temp);
-        setBook(book);
-        //bookService.add(temp);
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны");
-        alert.showAndWait();
+        try {
+            setBook(book);
+            alert.setTitle("Успешно");
+            alert.setHeaderText("Данные добавленны");
+            alert.showAndWait();
 
-        flag = false;
+            flag = false;
+        } catch (Exception e) {
+            alert_bad.setTitle("Ошибка");
+            alert_bad.setHeaderText("Ошибка ввода!");
+            alert_bad.setContentText(errorMesage);
+            alert_bad.showAndWait();
+        }
+        //bookService.add(temp);
+
 //        dialogStage.close();
     }
 

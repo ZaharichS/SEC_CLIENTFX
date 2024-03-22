@@ -16,6 +16,8 @@ public class PublisherController {
     private final PublisherService servicePublisher = new PublisherService();
     private final CityService cityService = new CityService();
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert_bad = new Alert(Alert.AlertType.ERROR);
+
     private boolean flag = true;
 
     @FXML
@@ -41,23 +43,48 @@ public class PublisherController {
     @FXML
     void addNewPublisher(ActionEvent event) {
         Publisher publisher = new Publisher();
-        publisher.setTitle(textName.getText());
-        publisher.setCity(comboBoxCity1.getSelectionModel().getSelectedItem());
+        String errorMesage = "";
+
+        if ( !textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+            publisher.setTitle(textName.getText());
+        } else  {
+            errorMesage += "\nполе Издание должно выглядеть так: Издание";
+        }
+        if ( comboBoxCity1.getSelectionModel().isEmpty()) {
+            publisher.setCity(comboBoxCity1.getSelectionModel().getSelectedItem());
+        } else{
+            errorMesage += "\nполе Город должно быть выбрано";
+        }
 
         if (flag) {
-            servicePublisher.add(publisher);
+            try {
+                servicePublisher.add(publisher);
+                alert.setTitle("Успешно");
+                alert.setHeaderText("Данные добавленны");
+                alert.showAndWait();
+
+                textName.clear();
+                comboBoxCity1.valueProperty().set(null);
+                dataList.getItems().clear();
+                initialize();
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         } else {
             publisher.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            servicePublisher.update(publisher, dataList.getSelectionModel().getSelectedItem());
+            try {
+                servicePublisher.update(publisher, dataList.getSelectionModel().getSelectedItem());
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны");
-        alert.showAndWait();
 
-        textName.clear();
-        comboBoxCity1.valueProperty().set(null);
-        dataList.getItems().clear();
-        initialize();
     }
 
     // Выбор издания по двойному клику

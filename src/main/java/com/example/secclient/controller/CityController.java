@@ -17,6 +17,7 @@ public class CityController {
     private final CityService service = new CityService();
     private boolean addFlag = true;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert_bad = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     private ListView<City> dataList;
@@ -36,21 +37,41 @@ public class CityController {
     @FXML
     void addNewCity(ActionEvent event) {
         City city = new City();
-        city.setTitle(textName.getText());
+        String errorMesage = "";
+
+        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+            city.setTitle(textName.getText());
+        } else {
+            errorMesage += "\nполе Город должно выглядеть так: Москва";
+        }
         if (addFlag) {
-            service.add(city);
+            try {
+                service.add(city);
+                alert.setTitle("Успешно");
+                alert.setHeaderText("Данные добавленны");
+                alert.showAndWait();
+
+                textName.clear();
+                textName.clear();
+                dataList.getItems().clear();
+                initialize();
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         } else {
             city.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            service.update(city, dataList.getSelectionModel().getSelectedItem());
+            try {
+                service.update(city, dataList.getSelectionModel().getSelectedItem());
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны");
-        alert.showAndWait();
-
-        textName.clear();
-        textName.clear();
-        dataList.getItems().clear();
-        initialize();
     }
 
     // Выбор города по двойному клику

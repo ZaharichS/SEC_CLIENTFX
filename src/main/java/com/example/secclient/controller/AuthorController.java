@@ -45,35 +45,52 @@ public class AuthorController {
     @FXML
     void addNewAuthor(ActionEvent event) {
         Author author = new Author();
+        String errorMesage = "";
         if ( textLastName.getText().isEmpty() || textLastName.getText().matches("[А-Я][а-я]{1,20}")) {
             author.setLastname(textLastName.getText());
+        } else {
+            errorMesage += "\nполе Отчество должно выглядеть так: Сергеевич";
         }
-
-        author.setName(textName.getText());
-        author.setSurname(textSurname.getText());
+        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+            author.setName(textName.getText());
+        } else {
+            errorMesage += "\nполе Имя должно выглядеть так: Александр";
+        }
+        if ( textSurname.getText().isEmpty() || textSurname.getText().matches("[А-Я][а-я]{1,20}")) {
+            author.setSurname(textSurname.getText());
+        } else {
+            errorMesage += "\nполе Фамилия должно выглядеть так: Пушкин";
+        }
 
         if (addFlag) {
             try {
                 service.add(author);
+                alert.setTitle("Успешно");
+                alert.setHeaderText("Данные добавленны");
+                alert.showAndWait();
+
+                textLastName.clear();
+                textName.clear();
+                textSurname.clear();
+                dataList.getItems().clear();
+                initialize();
             } catch (Exception e) {
                 alert_bad.setTitle("Ошибка");
-                alert_bad.setHeaderText("Ошибка ввода фамилии");
-                alert_bad.setContentText("Поле фамилия не должно быть пустым\nФамилия должна начинаться с . . .");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
                 alert_bad.showAndWait();
             }
         } else {
             author.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            service.update(author, dataList.getSelectionModel().getSelectedItem());
+            try {
+                service.update(author, dataList.getSelectionModel().getSelectedItem());
+            } catch (Exception e) {
+                alert_bad.setTitle("Ошибка");
+                alert_bad.setHeaderText("Ошибка ввода!");
+                alert_bad.setContentText(errorMesage);
+                alert_bad.showAndWait();
+            }
         }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные добавленны");
-        alert.showAndWait();
-
-        textLastName.clear();
-        textName.clear();
-        textSurname.clear();
-        dataList.getItems().clear();
-        initialize();
     }
 
 
@@ -85,8 +102,9 @@ public class AuthorController {
                 buttonAdd.setText("Изменить");
                 addFlag = false;
                 Author tempAuthor = dataList.getSelectionModel().getSelectedItem();
-                textLastName.setText(tempAuthor.getLastname());
+
                 textName.setText(tempAuthor.getName());
+                textLastName.setText(tempAuthor.getName());
                 textSurname.setText(tempAuthor.getSurname());
             }
         }
