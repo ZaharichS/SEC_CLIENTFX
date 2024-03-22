@@ -46,17 +46,17 @@ public class AuthorController {
     void addNewAuthor(ActionEvent event) {
         Author author = new Author();
         String errorMesage = "";
-        if ( textLastName.getText().isEmpty() || textLastName.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textLastName.getText().isEmpty() & textLastName.getText().matches("[А-Я][а-я]{1,20}")) {
             author.setLastname(textLastName.getText());
         } else {
             errorMesage += "\nполе Отчество должно выглядеть так: Сергеевич";
         }
-        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textName.getText().isEmpty() & textName.getText().matches("[А-Я][а-я]{1,20}")) {
             author.setName(textName.getText());
         } else {
             errorMesage += "\nполе Имя должно выглядеть так: Александр";
         }
-        if ( textSurname.getText().isEmpty() || textSurname.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textSurname.getText().isEmpty() & textSurname.getText().matches("[А-Я][а-я]{1,20}")) {
             author.setSurname(textSurname.getText());
         } else {
             errorMesage += "\nполе Фамилия должно выглядеть так: Пушкин";

@@ -40,7 +40,7 @@ public class GenreController {
         Genre genre = new Genre();
         String errorMesage = "";
 
-        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textName.getText().isEmpty() & textName.getText().matches("[А-Я][а-я]{1,20}")) {
             genre.setTitle(textName.getText());
         } else {
             errorMesage += "\nполе Жанр должно выглядеть так: Классика";

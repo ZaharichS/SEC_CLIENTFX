@@ -94,18 +94,30 @@ public class BookController {
         temp.setYear(textYear.getText());
         String errorMesage = "";
 
-        if ( textYear.getText().isEmpty() || textYear.getText().matches("[0-9]{4}")) {
-            temp.setTitle(textYear.getText());
+        if ( !textYear.getText().isEmpty() & textYear.getText().matches("^(?:19|20)\\d{2}$")) {
+            temp.setYear(textYear.getText());
         } else {
             errorMesage += "\nполе Год должно выглядеть так: 2015";
         }
-        temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
-        temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
-        temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
+        if ( !comboBoxAuthor.getSelectionModel().isEmpty()) {
+            temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
+        } else{
+            errorMesage += "\nполе Автор должно быть выбрано";
+        }
+        if ( !comboBoxGenre.getSelectionModel().isEmpty()) {
+            temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
+        } else{
+            errorMesage += "\nполе Жанр должно быть выбрано";
+        }
+        if ( !comboBoxPublisher.getSelectionModel().isEmpty()) {
+            temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
+        } else{
+            errorMesage += "\nполе Издание должно быть выбрано";
+        }
 
         book = Optional.of(temp);
         try {
-            setBook(book);
+            bookService.add(temp);
             alert.setTitle("Успешно");
             alert.setHeaderText("Данные добавленны");
             alert.showAndWait();
@@ -117,7 +129,7 @@ public class BookController {
             alert_bad.setContentText(errorMesage);
             alert_bad.showAndWait();
         }
-        //bookService.add(temp);
+
 
 //        dialogStage.close();
     }

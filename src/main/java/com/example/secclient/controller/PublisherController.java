@@ -45,12 +45,12 @@ public class PublisherController {
         Publisher publisher = new Publisher();
         String errorMesage = "";
 
-        if ( !textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textName.getText().isEmpty() & textName.getText().matches("[А-Я][а-я]{1,20}")) {
             publisher.setTitle(textName.getText());
         } else  {
             errorMesage += "\nполе Издание должно выглядеть так: Издание";
         }
-        if ( comboBoxCity1.getSelectionModel().isEmpty()) {
+        if ( !comboBoxCity1.getSelectionModel().isEmpty()) {
             publisher.setCity(comboBoxCity1.getSelectionModel().getSelectedItem());
         } else{
             errorMesage += "\nполе Город должно быть выбрано";

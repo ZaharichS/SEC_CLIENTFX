@@ -39,7 +39,7 @@ public class CityController {
         City city = new City();
         String errorMesage = "";
 
-        if ( textName.getText().isEmpty() || textName.getText().matches("[А-Я][а-я]{1,20}")) {
+        if ( !textName.getText().isEmpty() & textName.getText().matches("[А-Я][а-я]{1,20}")) {
             city.setTitle(textName.getText());
         } else {
             errorMesage += "\nполе Город должно выглядеть так: Москва";
