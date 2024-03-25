@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class GenreController {
 
@@ -29,10 +30,24 @@ public class GenreController {
     @FXML
     private Button buttonAdd;
 
+    private Stage dialogStage;
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
     @FXML
     private void initialize() {
-        service.getAll();
-        dataList.setItems(service.getGenres());
+        try {
+            service.getAll();
+            dataList.setItems(service.getGenres());
+        } catch (Exception e ) {
+            alert.setTitle("Ошибка!");
+            alert.setHeaderText("Отсутствует подключение к серверу ");
+            alert.setContentText("Обратитесь в тех.поддержку.....");
+            alert.showAndWait();
+            dialogStage.close();
+        }
     }
 
     @FXML
@@ -66,10 +81,17 @@ public class GenreController {
             try {
                 service.update(genre, dataList.getSelectionModel().getSelectedItem());
             } catch (Exception e) {
-                alert_bad.setTitle("Ошибка");
-                alert_bad.setHeaderText("Ошибка ввода!");
-                alert_bad.setContentText(errorMesage);
-                alert_bad.showAndWait();
+                if (!errorMesage.isEmpty()) {
+                    alert_bad.setTitle("Ошибка");
+                    alert_bad.setHeaderText("Ошибка ввода!");
+                    alert_bad.setContentText(errorMesage);
+                    alert_bad.showAndWait();
+                } else {
+                    alert_bad.setTitle("Ошибка");
+                    alert_bad.setHeaderText("Ошибка подключения!");
+                    alert_bad.setContentText("Подключитесь к серверу...");
+                    alert_bad.showAndWait();
+                }
             }
         }
 

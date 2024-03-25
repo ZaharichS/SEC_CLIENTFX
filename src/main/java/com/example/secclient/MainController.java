@@ -15,6 +15,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Optional;
 
@@ -47,7 +49,14 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        service.getAll();
+        try {
+            service.getAll();
+        } catch (Exception e ) {
+            alert.setTitle("Ошибка!");
+            alert.setHeaderText("Отсутствует подключение к серверу ");
+            alert.setContentText("Обратитесь в тех.поддержку.....");
+            alert.showAndWait();
+        }
 
         bookAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
         bookGenre.setCellValueFactory(new PropertyValueFactory<Book, String>("genre"));
@@ -100,14 +109,15 @@ public class MainController {
         bookTable.getItems().clear();
         initialize();
     }
-    private Optional<Book> book = Optional.empty();
 
+    private Optional<Book> book;
     public void setBook(Optional<Book> book) {
         this.book = book;
         if (book.isPresent()) {
             if (book.get().getId() != null) {
                 service.update(book.get());
             } else {
+                service.delete(bookTable.getSelectionModel().getSelectedItem());
                 service.add(book.get());
             }
         }

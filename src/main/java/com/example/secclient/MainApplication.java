@@ -1,6 +1,6 @@
 package com.example.secclient;
 
-import com.example.secclient.controller.BookController;
+import com.example.secclient.controller.*;
 import com.example.secclient.entity.Book;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +50,8 @@ public class MainApplication extends Application {
 
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
+            AuthorController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,14 +71,11 @@ public class MainApplication extends Application {
 
             BookController controller = loader.getController();
             controller.setBook(book);
+            controller.setDialogStage(dialogStage);
             controller.start();
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
-
-            /*if (controller.addFlag()) {
-                dialogStage.close();
-            }*/
 
             book = controller.getBook();
             mainController.setBook(book);
@@ -98,6 +97,8 @@ public class MainApplication extends Application {
             dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
 
             Scene scene = new Scene(page);
+            CityController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
         } catch (IOException e) {
@@ -117,6 +118,8 @@ public class MainApplication extends Application {
             dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
 
             Scene scene = new Scene(page);
+            GenreController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
         } catch (IOException e) {
@@ -136,6 +139,8 @@ public class MainApplication extends Application {
             dialogStage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("image/icons/png/main_icon.png"))));
 
             Scene scene = new Scene(page);
+            PublisherController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             dialogStage.setScene(scene);
             dialogStage.showAndWait();
         } catch (IOException e) {

@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class AuthorController {
 
@@ -36,16 +37,31 @@ public class AuthorController {
     @FXML
     private Button buttonAdd;
 
+    private Stage dialogStage;
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
     @FXML
     private void initialize() {
-        service.getAll();
-        dataList.setItems(service.getAuthors());
+        try {
+            service.getAll();
+            dataList.setItems(service.getAuthors());
+        } catch (Exception e ) {
+            alert.setTitle("Ошибка!");
+            alert.setHeaderText("Отсутствует подключение к серверу ");
+            alert.setContentText("Обратитесь в тех.поддержку.....");
+            alert.showAndWait();
+            dialogStage.close();
+        }
     }
 
     @FXML
     void addNewAuthor(ActionEvent event) {
         Author author = new Author();
         String errorMesage = "";
+        String serverError = "";
         if ( !textLastName.getText().isEmpty() & textLastName.getText().matches("[А-Я][а-я]{1,20}")) {
             author.setLastname(textLastName.getText());
         } else {

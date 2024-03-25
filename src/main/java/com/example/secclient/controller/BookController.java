@@ -115,13 +115,13 @@ public class BookController {
             errorMesage += "\nполе Издание должно быть выбрано";
         }
 
-        book = Optional.of(temp);
+        setBook(book = Optional.of(temp));
         try {
             bookService.add(temp);
             alert.setTitle("Успешно");
             alert.setHeaderText("Данные добавленны");
             alert.showAndWait();
-
+            dialogStage.close();
             flag = false;
         } catch (Exception e) {
             alert_bad.setTitle("Ошибка");
@@ -130,8 +130,6 @@ public class BookController {
             alert_bad.showAndWait();
         }
 
-
-//        dialogStage.close();
     }
 
     @FXML
@@ -150,6 +148,7 @@ public class BookController {
         alert.setTitle("Успешно");
         alert.setHeaderText("Данные добавленны");
         alert.showAndWait();
+        dialogStage.close();
     }
 
     @FXML
