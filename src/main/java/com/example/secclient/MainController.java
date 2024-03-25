@@ -104,10 +104,16 @@ public class MainController {
     @FXML
     void changeBookAction(ActionEvent event) {
         Optional<Book> book = Optional.ofNullable(bookTable.getSelectionModel().getSelectedItem());
-        MainApplication.showBookModal(book);
-
-        bookTable.getItems().clear();
-        initialize();
+        if (bookTable.getSelectionModel().getSelectedItem() != null) {
+            MainApplication.showBookModal(book);
+            bookTable.getItems().clear();
+            initialize();
+        } else {
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранная книга ");
+            alert.setContentText("Выберите книгу в таблице");
+            alert.showAndWait();
+        }
     }
 
     private Optional<Book> book;
