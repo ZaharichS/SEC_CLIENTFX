@@ -120,7 +120,7 @@ public class AuthorController {
                 Author tempAuthor = dataList.getSelectionModel().getSelectedItem();
 
                 textName.setText(tempAuthor.getName());
-                textLastName.setText(tempAuthor.getName());
+                textLastName.setText(tempAuthor.getLastname());
                 textSurname.setText(tempAuthor.getSurname());
             }
         }
@@ -138,24 +138,31 @@ public class AuthorController {
     @FXML
     void deleteAuthor(ActionEvent event) {
         Author tempAuthor = dataList.getSelectionModel().getSelectedItem();
-        textLastName.setText(tempAuthor.getLastname());
-        textName.setText(tempAuthor.getName());
-        textSurname.setText(tempAuthor.getSurname());
-        if (addFlag) {
-            service.delete(tempAuthor);
-        } else {
-            tempAuthor.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            service.delete(tempAuthor);
-        }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные были удалены!");
-        alert.showAndWait();
+        if (tempAuthor != null) {
+            textLastName.setText(tempAuthor.getLastname());
+            textName.setText(tempAuthor.getName());
+            textSurname.setText(tempAuthor.getSurname());
+            try {
+                service.delete(tempAuthor);
+                alert.setTitle("Успешно");
+                alert.setHeaderText("Данные были удалены!");
+                alert.showAndWait();
 
-        textLastName.clear();
-        textName.clear();
-        textSurname.clear();
-        dataList.getItems().clear();
-        initialize();
+                textLastName.clear();
+                textName.clear();
+                textSurname.clear();
+                dataList.getItems().clear();
+                initialize();
+            } catch (Exception e) {
+                dataList.getItems().clear();
+                initialize();
+            }
+        } else {
+            alert.setTitle("Успешно");
+            alert.setHeaderText("Данные не выбраны");
+            alert.showAndWait();
+        }
+
     }
 
 }

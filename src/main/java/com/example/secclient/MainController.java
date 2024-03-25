@@ -123,8 +123,9 @@ public class MainController {
             if (book.get().getId() != null) {
                 service.update(book.get());
             } else {
+                // ДОПИСАТЬ
                 service.delete(bookTable.getSelectionModel().getSelectedItem());
-                book.get().setId(bookTable.getSelectionModel().getSelectedItem().getId());
+                //book.get().setId(bookTable.getSelectionModel().getSelectedItem().getId());
                 service.add(book.get());
             }
         }
