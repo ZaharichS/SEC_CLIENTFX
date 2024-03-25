@@ -124,6 +124,7 @@ public class MainController {
                 service.update(book.get());
             } else {
                 service.delete(bookTable.getSelectionModel().getSelectedItem());
+                book.get().setId(bookTable.getSelectionModel().getSelectedItem().getId());
                 service.add(book.get());
             }
         }

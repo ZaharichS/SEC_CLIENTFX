@@ -84,6 +84,7 @@ public class BookController {
             comboBoxAuthor.setValue(book.get().getAuthor());
             comboBoxGenre.setValue(book.get().getGenre());
             comboBoxPublisher.setValue(book.get().getPublisher());
+            buttonAdd.setText("Изменить");
         }
     }
 

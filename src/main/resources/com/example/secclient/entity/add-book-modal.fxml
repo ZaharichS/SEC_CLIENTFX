@@ -39,17 +39,12 @@
       </Pane>
       <ButtonBar layoutX="66.0" layoutY="255.0" prefHeight="40.0" prefWidth="395.0">
          <buttons>
-            <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewBook" prefHeight="18.0" prefWidth="139.0" text="Добавить">
+            <Button fx:id="buttonAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeBook" prefHeight="18.0" prefWidth="139.0" text="Добавить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
             </Button>
             <Button fx:id="buttonCancel" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="18.0" text="Отмена">
-               <padding>
-                  <Insets bottom="1.0" />
-               </padding>
-            </Button>
-            <Button fx:id="buttonChange" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeBook" prefHeight="18.0" prefWidth="139.0" text="Изменить">
                <padding>
                   <Insets bottom="1.0" />
                </padding>
