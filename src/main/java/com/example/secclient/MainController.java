@@ -124,9 +124,12 @@ public class MainController {
                 service.update(book.get());
             } else {
                 // ДОПИСАТЬ
-                service.delete(bookTable.getSelectionModel().getSelectedItem());
-                //book.get().setId(bookTable.getSelectionModel().getSelectedItem().getId());
-                service.add(book.get());
+                try {
+                    service.delete(bookTable.getSelectionModel().getSelectedItem());
+                    service.add(book.get());
+                } catch (Exception e) {
+                    service.add(book.get());
+                }
             }
         }
     }
