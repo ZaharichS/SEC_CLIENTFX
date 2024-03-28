@@ -119,21 +119,22 @@ public class CityController {
     @FXML
     void deleteCity(ActionEvent event) {
         City tempCity = dataList.getSelectionModel().getSelectedItem();
-        textName.setText(tempCity.getTitle());
-        if (addFlag) {
+        if (!textName.getText().isEmpty()) {
+            textName.setText(tempCity.getTitle());
             service.delete(tempCity);
-            dataList.getSelectionModel().clearSelection();
-        } else {
-            tempCity.setId(dataList.getSelectionModel().getSelectedItem().getId());
-            service.delete(tempCity);
-        }
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные были удалены!");
-        alert.showAndWait();
+            alert.setTitle("Успешно");
+            alert.setHeaderText("Данные были удалены!");
+            alert.showAndWait();
 
-        textName.clear();
-        dataList.getItems().clear();
-        initialize();
+            textName.clear();
+            dataList.getItems().clear();
+            dataList.getSelectionModel().clearSelection();
+            initialize();
+        } else {
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Данные не выбраны");
+            alert.showAndWait();
+        }
     }
 
 }

@@ -120,27 +120,19 @@ public class GenreController {
     @FXML
     void deleteGenre(ActionEvent event) {
         Genre tempGenre = dataList.getSelectionModel().getSelectedItem();
-        if (addFlag) {
+        if (!textName.getText().isEmpty()) {
             textName.setText(tempGenre.getTitle());
-            try {
-                service.delete(tempGenre);
-
-                alert.setTitle("Успешно");
-                alert.setHeaderText("Данные были удалены!");
-                alert.showAndWait();
-
-                textName.clear();
-                dataList.getItems().clear();
-                dataList.getSelectionModel().clearSelection();
-                initialize();
-            } catch (Exception e ){
-                textName.clear();
-                dataList.getItems().clear();
-                dataList.getSelectionModel().clearSelection();
-                initialize();
-            }
-        } else {
+            service.delete(tempGenre);
             alert.setTitle("Успешно");
+            alert.setHeaderText("Данные были удалены!");
+            alert.showAndWait();
+
+            textName.clear();
+            dataList.getItems().clear();
+            dataList.getSelectionModel().clearSelection();
+            initialize();
+        } else {
+            alert.setTitle("Ошибка");
             alert.setHeaderText("Данные не выбраны");
             alert.showAndWait();
         }

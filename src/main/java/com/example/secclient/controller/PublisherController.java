@@ -133,15 +133,24 @@ public class PublisherController {
 
     @FXML
     void deletePublisher(ActionEvent event) {
-        servicePublisher.delete(dataList.getSelectionModel().getSelectedItem());
-        alert.setTitle("Успешно");
-        alert.setHeaderText("Данные были удалены!");
-        alert.showAndWait();
+        Publisher tempPublisher = dataList.getSelectionModel().getSelectedItem();
+        if (!textName.getText().isEmpty() & !comboBoxCity1.getSelectionModel().isEmpty()) {
+            textName.setText(tempPublisher.getTitle());
+            comboBoxCity1.setValue(tempPublisher.getCity());
+            servicePublisher.delete(tempPublisher);
+            alert.setTitle("Успешно");
+            alert.setHeaderText("Данные были удалены!");
+            alert.showAndWait();
 
-        textName.clear();
-        comboBoxCity1.valueProperty().set(null);
-        dataList.getItems().clear();
-        initialize();
+            textName.clear();
+            dataList.getItems().clear();
+            dataList.getSelectionModel().clearSelection();
+            initialize();
+        } else {
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Данные не выбраны");
+            alert.showAndWait();
+        }
     }
 
 }
