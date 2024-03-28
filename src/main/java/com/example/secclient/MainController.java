@@ -105,6 +105,11 @@ public class MainController {
     void changeBookAction(ActionEvent event) {
         Optional<Book> book = Optional.ofNullable(bookTable.getSelectionModel().getSelectedItem());
         if (bookTable.getSelectionModel().getSelectedItem() != null) {
+            alert.setTitle("Совет");
+            alert.setHeaderText("Введите новые данные!");
+            alert.setContentText("Некоторые данные нужно выбрать еще раз.\nДаже если они УЖЕ выбраны.");
+            alert.showAndWait();
+
             MainApplication.showBookModal(book);
             bookTable.getItems().clear();
             initialize();

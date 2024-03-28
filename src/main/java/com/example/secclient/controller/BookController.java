@@ -93,44 +93,43 @@ public class BookController {
         Book temp = new Book();
         temp.setTitle(textName.getText());
         temp.setYear(textYear.getText());
-        String errorMesage = "";
+        String errorMessage = "";
+        int iteError = 0;
 
         if ( !textYear.getText().isEmpty() & textYear.getText().matches("^(?:19|20)\\d{2}$")) {
             temp.setYear(textYear.getText());
         } else {
-            errorMesage += "\nполе Год должно выглядеть так: 2015";
+            errorMessage += "\nполе Год должно выглядеть так: 2015";
         }
         if ( !comboBoxAuthor.getSelectionModel().isEmpty()) {
             temp.setAuthor(comboBoxAuthor.getSelectionModel().getSelectedItem());
         } else{
-            errorMesage += "\nполе Автор должно быть выбрано";
+            errorMessage += "\nполе Автор должно быть выбрано";
         }
         if ( !comboBoxGenre.getSelectionModel().isEmpty()) {
             temp.setGenre(comboBoxGenre.getSelectionModel().getSelectedItem());
         } else{
-            errorMesage += "\nполе Жанр должно быть выбрано";
+            errorMessage += "\nполе Жанр должно быть выбрано";
         }
         if ( !comboBoxPublisher.getSelectionModel().isEmpty()) {
             temp.setPublisher(comboBoxPublisher.getSelectionModel().getSelectedItem());
         } else{
-            errorMesage += "\nполе Издание должно быть выбрано";
+            errorMessage += "\nполе Издание должно быть выбрано";
         }
 
         setBook(book = Optional.of(temp));
-        try {
-            bookService.add(temp);
+        if (errorMessage.isEmpty()) {
             alert.setTitle("Успешно");
             alert.setHeaderText("Данные добавленны");
             alert.showAndWait();
             dialogStage.close();
-            flag = false;
-        } catch (Exception e) {
+        } else {
             alert_bad.setTitle("Ошибка");
             alert_bad.setHeaderText("Ошибка ввода!");
-            alert_bad.setContentText(errorMesage);
+            alert_bad.setContentText(errorMessage);
             alert_bad.showAndWait();
+            iteError++;
         }
-
     }
 
     @FXML
