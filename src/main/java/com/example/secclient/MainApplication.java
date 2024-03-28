@@ -22,7 +22,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 840, 465);
-        stage.setTitle("Your Book App");
+        stage.setTitle("BookLib");
         /*
         Устанавливаем иконку на родном toolbar
         Параметр который запрещает масштабировать окно

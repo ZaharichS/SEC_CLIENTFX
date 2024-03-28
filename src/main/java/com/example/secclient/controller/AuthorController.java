@@ -138,27 +138,25 @@ public class AuthorController {
     @FXML
     void deleteAuthor(ActionEvent event) {
         Author tempAuthor = dataList.getSelectionModel().getSelectedItem();
-        if (tempAuthor != null) {
+        if (!textName.getText().isEmpty() &
+            !textSurname.getText().isEmpty() &
+            !textLastName.getText().isEmpty())
+        {
             textLastName.setText(tempAuthor.getLastname());
             textName.setText(tempAuthor.getName());
             textSurname.setText(tempAuthor.getSurname());
-            try {
-                service.delete(tempAuthor);
-                alert.setTitle("Успешно");
-                alert.setHeaderText("Данные были удалены!");
-                alert.showAndWait();
 
-                textLastName.clear();
-                textName.clear();
-                textSurname.clear();
-                dataList.getItems().clear();
-                initialize();
-            } catch (Exception e) {
-                dataList.getItems().clear();
-                initialize();
-            }
-        } else {
+            service.delete(tempAuthor);
             alert.setTitle("Успешно");
+            alert.setHeaderText("Данные были удалены!");
+            alert.showAndWait();
+
+            textLastName.clear();
+            textName.clear();
+            textSurname.clear();
+            dataList.getItems().clear();
+        } else {
+            alert.setTitle("Ошибка");
             alert.setHeaderText("Данные не выбраны");
             alert.showAndWait();
         }
